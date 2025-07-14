@@ -1,0 +1,517 @@
+:root {
+    --primary-color: #8b0000;
+    --secondary-color: #2c1810;
+    --accent-color: #ff4500;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --bg-dark: #1a0f0a;
+    --bg-card: rgba(44, 24, 16, 0.9);
+    --shadow: 0 20px 40px rgba(139, 0, 0, 0.4);
+    --gradient: linear-gradient(135deg, #8b0000 0%, #ff4500 50%, #ffa500 100%);
+    
+    --public-security: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+    --defense-ministry: linear-gradient(135deg, #b95c05 0%, #ea7506 50%, #f59e0b 100%);
+    --special-forces: linear-gradient(135deg, #0e0b0b 0%, #282828 50%, #404040 100%);
+    --swat-team: linear-gradient(135deg, #211992 0%, #4232c8 50%, #6366f1 100%);
+    --health-ministry: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+    --justice-ministry: linear-gradient(135deg, #3f2c0c 0%, #785317 50%, #a16207 100%);
+    --royal-guard: linear-gradient(135deg, #00a52d 0%, #22c55e 50%, #4ade80 100%);
+    --grievance-office: linear-gradient(135deg, #8b1538 0%, #a91b47 50%, #c72448 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: url('img/Wallpaper.jpg') center/cover no-repeat, linear-gradient(-45deg, #1a0f0a, #2c1810, #8b0000, #ff4500);
+    background-size: cover, 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+.background-animation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 15, 10, 0.7);
+    z-index: 1;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.floating-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    animation: float 6s infinite ease-in-out;
+    opacity: 0.8;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.particle:nth-child(3n) {
+    background: url('img/super.gif') center/contain no-repeat;
+    width: 20px;
+    height: 20px;
+    opacity: 0.1;
+    animation: floatGif 8s infinite ease-in-out;
+}
+
+@keyframes floatGif {
+    0%, 100% { transform: translateY(0px) rotate(0deg) scale(0.5); }
+    50% { transform: translateY(-30px) rotate(180deg) scale(1); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(44, 24, 16, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.nav-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    position: relative;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+    background: rgba(255, 69, 0, 0.1);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 120px auto 40px;
+    padding: 0 2rem;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 4rem 0;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50px;
+    width: 150px;
+    height: 150px;
+    background: url('img/super.gif') center/contain no-repeat;
+    opacity: 0.3;
+    animation: float 3s ease-in-out infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    width: 120px;
+    height: 120px;
+    background: url('img/super.gif') center/contain no-repeat;
+    opacity: 0.2;
+    animation: float 4s ease-in-out infinite reverse;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    animation: slideInDown 1s ease;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 2;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: slideInUp 1s ease 0.3s both;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    background: rgba(139, 0, 0, 0.3);
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    position: relative;
+    z-index: 2;
+    border: 1px solid var(--accent-color);
+}
+
+@keyframes slideInDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.rule-category {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.rule-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient);
+}
+
+.rule-category::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: url('img/super.gif') center/contain no-repeat;
+    opacity: 0.1;
+    z-index: 0;
+    transition: all 0.3s ease;
+}
+
+.rule-category.public-security::before {
+    background: var(--public-security);
+}
+
+.rule-category.public-security .category-icon {
+    background: var(--public-security);
+}
+
+.rule-category.public-security:hover {
+    box-shadow: 0 30px 60px rgba(30, 58, 138, 0.6);
+    border: 1px solid #3b82f6;
+}
+
+.rule-category.defense-ministry::before {
+    background: var(--defense-ministry);
+}
+
+.rule-category.defense-ministry .category-icon {
+    background: var(--defense-ministry);
+}
+
+.rule-category.defense-ministry:hover {
+    box-shadow: 0 30px 60px rgba(185, 92, 5, 0.6);
+    border: 1px solid #b95c05;
+}
+
+.rule-category.special-forces::before {
+    background: var(--special-forces);
+}
+
+.rule-category.special-forces .category-icon {
+    background: var(--special-forces);
+}
+
+.rule-category.special-forces:hover {
+    box-shadow: 0 30px 60px rgba(14, 11, 11, 0.8);
+    border: 1px solid #404040;
+}
+
+.rule-category.special-forces .category-title,
+.rule-category.special-forces .category-description {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.rule-category.swat-team::before {
+    background: var(--swat-team);
+}
+
+.rule-category.swat-team .category-icon {
+    background: var(--swat-team);
+}
+
+.rule-category.swat-team:hover {
+    box-shadow: 0 30px 60px rgba(33, 25, 146, 0.6);
+    border: 1px solid #211992;
+}
+
+.rule-category.health-ministry::before {
+    background: var(--health-ministry);
+}
+
+.rule-category.health-ministry .category-icon {
+    background: var(--health-ministry);
+}
+
+.rule-category.health-ministry:hover {
+    box-shadow: 0 30px 60px rgba(220, 38, 38, 0.6);
+    border: 1px solid #dc2626;
+}
+
+.rule-category.justice-ministry::before {
+    background: var(--justice-ministry);
+}
+
+.rule-category.justice-ministry .category-icon {
+    background: var(--justice-ministry);
+}
+
+.rule-category.justice-ministry:hover {
+    box-shadow: 0 30px 60px rgba(63, 44, 12, 0.6);
+    border: 1px solid #3f2c0c;
+}
+
+.rule-category.justice-ministry .category-title,
+.rule-category.justice-ministry .category-description {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.rule-category.royal-guard::before {
+    background: var(--royal-guard);
+}
+
+.rule-category.royal-guard .category-icon {
+    background: var(--royal-guard);
+}
+
+.rule-category.royal-guard:hover {
+    box-shadow: 0 30px 60px rgba(0, 165, 45, 0.6);
+    border: 1px solid #00a52d;
+}
+
+.rule-category.grievance-office::before {
+    background: var(--grievance-office);
+}
+
+.rule-category.grievance-office .category-icon {
+    background: var(--grievance-office);
+}
+
+.rule-category.grievance-office:hover {
+    box-shadow: 0 30px 60px rgba(139, 21, 56, 0.6);
+    border: 1px solid #8b1538;
+}
+
+.rule-category:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.rule-category:hover::after {
+    opacity: 0.3;
+    transform: scale(1.2);
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.rule-category:hover .category-icon {
+    transform: scale(1.1);
+}
+
+.category-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.category-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.category-arrow {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.rule-category:hover .category-arrow {
+    opacity: 1;
+    left: 15px;
+}
+
+.footer {
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1200px) {
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links { 
+        display: none; 
+    }
+    
+    .hero h1 { 
+        font-size: 2.5rem; 
+    }
+    
+    .rules-grid { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .rule-category { 
+        padding: 2rem; 
+    }
+    
+    .container { 
+        padding: 0 1rem; 
+    }
+    
+    .category-title {
+        font-size: 1.5rem;
+    }
+}
