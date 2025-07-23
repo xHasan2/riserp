@@ -109,7 +109,6 @@
             }
         }
 
-        /* شريط التنقل */
         .navbar {
             position: fixed;
             top: 0;
@@ -183,14 +182,12 @@
             width: 100%;
         }
 
-        /* الحاوية الرئيسية */
         .container {
             max-width: 600px;
             margin: 120px auto 40px;
             padding: 0 1rem;
         }
 
-        /* قسم العنوان الرئيسي */
         .hero-section {
             text-align: center;
             padding: 2rem 0;
@@ -259,7 +256,6 @@
             margin-right: auto;
         }
 
-        /* حاوية الصفوف المتوازية */
         .cards-row {
             display: flex;
             gap: 1rem;
@@ -267,7 +263,6 @@
             align-items: stretch;
         }
 
-        /* بطاقة Discord الرئيسية */
         .discord-main-card {
             background: linear-gradient(135deg, 
                 rgba(88, 101, 242, 0.15) 0%, 
@@ -553,7 +548,6 @@
             font-size: 0.8rem;
         }
 
-        /* تأثيرات الظهور */
         .fade-in {
             animation: fadeIn 0.8s ease forwards;
         }
@@ -569,7 +563,6 @@
             }
         }
 
-        /* التجاوب مع الشاشات */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem;
@@ -632,7 +625,7 @@
                 width: 60px;
                 height: 60px;
                 font-size: 2rem;
-                background: url('img/Hasp.jpg') center/cover no-repeat, 
+                background: url('img/Hasp.gif') center/cover no-repeat, 
                            linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
             }
 
@@ -649,10 +642,8 @@
     </style>
 </head>
 <body>
-    <!-- خلفية متحركة -->
     <div class="background-animation"></div>
     
-    <!-- جزيئات متحركة -->
     <div class="floating-particles">
         <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
         <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
@@ -665,7 +656,6 @@
         <div class="particle" style="left: 90%; animation-delay: 2.5s;"></div>
     </div>
 
-    <!-- شريط التنقل -->
     <nav class="navbar">
         <div class="nav-content">
             <a href="index.html" class="logo">
@@ -684,9 +674,7 @@
         </div>
     </nav>
 
-    <!-- المحتوى الرئيسي -->
     <div class="container">
-        <!-- قسم العنوان الرئيسي -->
         <section class="hero-section fade-in">
             <div class="hero-icon">
                 <i class="fas fa-crown"></i>
@@ -695,9 +683,7 @@
             <p class="hero-subtitle">مكتب العدالة والإنصاف لحل الشكاوى والمظالم بكل شفافية ونزاهة</p>
         </section>
 
-        <!-- حاوية البطاقات المتوازية -->
         <div class="cards-row fade-in">
-            <!-- بطاقة DEV خاصة -->
             <div class="dev-contact-card">
                 <h3 class="dev-title">
                     <i class="fas fa-crown"></i>
@@ -717,7 +703,6 @@
                 </div>
             </div>
 
-            <!-- بطاقة Discord الرئيسية -->
             <div class="discord-main-card">
                 <div class="discord-icon-large">
                     <i class="fab fa-discord"></i>
@@ -734,7 +719,6 @@
             </div>
         </div>
 
-        <!-- بطاقة معلومات إضافية -->
         <div class="info-card fade-in">
             <h3 class="info-title">
                 <i class="fas fa-info-circle"></i>
@@ -746,14 +730,13 @@
         </div>
     </div>
 
-    <!-- التذييل -->
     <footer class="footer">
         <p>&copy; 2025 Rise RP Server. جميع الحقوق محفوظة.</p>
         <p>ديوان المظالم - العدالة والإنصاف لجميع </p>
     </footer>
 
     <script>
-        // تأثيرات الظهور عند التمرير
+
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -768,7 +751,6 @@
             });
         }, observerOptions);
 
-        // مراقبة جميع العناصر التي تحتوي على الكلاس fade-in
         document.querySelectorAll('.fade-in').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
@@ -776,7 +758,6 @@
             observer.observe(el);
         });
 
-        // تأثير الجزيئات العشوائية
         function createRandomParticles() {
             const particlesContainer = document.querySelector('.floating-particles');
             
@@ -790,7 +771,6 @@
             }
         }
 
-        // إنشاء الجزيئات عند تحميل الصفحة
         window.addEventListener('load', createRandomParticles);
     </script>
 </body>
