@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise RP | القوات البحرية - حماة البحار</title>
+    <link rel="icon" type="image/jpg" href="./img/icon.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --navy-primary: #001f3f;
+            --navy-secondary: #003366;
+            --navy-accent: #0074D9;
+            --text-light: #ffffff;
+            --text-secondary: #cbd5e1;
+            --bg-dark: #0f0f0f;
+            --glass-bg: rgba(0, 31, 63, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-primary: 0 25px 50px -12px rgba(0, 116, 217, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #001122 50%, var(--navy-primary) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/b7reh.png') center/contain no-repeat;
+            opacity: 0.05;
+            z-index: -1;
+            animation: wave 4s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { opacity: 0.05; transform: translateY(0); }
+            50% { opacity: 0.1; transform: translateY(-10px); }
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 116, 217, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 51, 102, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 31, 63, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--navy-accent), var(--navy-secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 31, 63, 0.3), rgba(0, 116, 217, 0.1));
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--navy-primary), var(--navy-accent));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--navy-accent), var(--navy-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .unit-info-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--navy-primary), var(--navy-accent));
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--navy-primary), var(--navy-accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .info-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .mission-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .mission-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .mission-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .requirements-section {
+            margin: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-banner {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--navy-primary), var(--navy-accent));
+            color: var(--text-light);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-primary);
+            border: 2px solid var(--navy-accent);
+        }
+
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .final-requirements {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .final-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .final-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .final-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(0, 116, 217, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            border: 1px solid var(--navy-accent);
+            min-width: 300px;
+            justify-content: flex-start;
+        }
+
+        .final-item i {
+            color: var(--navy-accent);
+            font-size: 1.2rem;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .requirement-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .requirement-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--navy-accent);
+        }
+
+        .requirement-icon {
+            font-size: 2rem;
+            color: var(--navy-accent);
+            margin-bottom: 1rem;
+        }
+
+        .requirement-title {
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .requirement-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--navy-primary), var(--bg-dark));
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--navy-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero-title { font-size: 2.5rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .requirements-grid { grid-template-columns: 1fr; }
+            .footer-links { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <span>Rise RP</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="military-rules.html" class="nav-link"><i class="fas fa-shield-alt"></i> القوانين العسكرية</a></li>
+                <li><a href="marines.html" class="nav-link"><i class="fas fa-skull-crossbones"></i> المارينز</a></li>
+                <li><a href="commandos.html" class="nav-link"><i class="fas fa-bolt"></i> الصاعقة</a></li>
+                <li><a href="navy.html" class="nav-link active"><i class="fas fa-ship"></i> القوات البحرية</a></li>
+                <li><a href="airforce.html" class="nav-link"><i class="fas fa-fighter-jet"></i> القوات الجوية</a></li>
+                <li><a href="intelligence.html" class="nav-link"><i class="fas fa-search"></i> البحث والتحري</a></li>
+                <li><a href="death-battalion.html" class="nav-link"><i class="fas fa-skull"></i> كتيبة الموت</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <i class="fas fa-ship"></i>
+                <span>حماة البحار والمياه الإقليمية</span>
+            </div>
+            <h1 class="hero-title">
+                القوات <span class="highlight">البحرية</span>
+            </h1>
+            <p class="hero-subtitle">
+                وحدة النخبة المتخصصة في حماية البحار والعمليات البحرية وأمان الموانئ والسواحل
+            </p>
+        </div>
+    </section>
+
+    <div class="unit-info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-anchor"></i>
+                </div>
+                <h3 class="info-title">العمليات البحرية</h3>
+                <p class="info-description">
+                    تنفيذ جميع العمليات البحرية من دوريات ومراقبة وحماية السواحل والموانئ
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-life-ring"></i>
+                </div>
+                <h3 class="info-title">الإنقاذ البحري</h3>
+                <p class="info-description">
+                    عمليات البحث والإنقاذ في البحر وإنقاذ المدنيين من المواقف الخطيرة
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-water"></i>
+                </div>
+                <h3 class="info-title">حماية المياه الإقليمية</h3>
+                <p class="info-description">
+                    الدفاع عن المياه الإقليمية ومنع التسلل والأنشطة غير القانونية
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-radar"></i>
+                </div>
+                <h3 class="info-title">المراقبة والاستطلاع</h3>
+                <p class="info-description">
+                    مراقبة الحركة البحرية وجمع المعلومات الاستخباراتية البحرية
+                </p>
+            </div>
+        </div>
+
+        <div class="mission-section">
+            <h2 class="mission-title">من نحن</h2>
+            <p class="mission-description">
+
+
+
+        </div>
+
+        <div class="requirements-section">
+            <div class="section-header">
+                <div class="section-banner">
+                    <span>دورة القوات البحرية</span>
+                </div>
+                <h2 class="section-title">قوانين دورة القوات البحرية</h2>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4 class="requirement-title">اللبس الكامل</h4>
+                    <p class="requirement-desc">الالتزام باللباس العسكري الكامل والمناسب للقوات البحرية</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h4 class="requirement-title">المواقع البحرية</h4>
+                    <p class="requirement-desc">الدخول البحري في المواقع التاليه: سيناريو الميناء - سيناريو الملاهي - سناريوهات البحريه بشكل عام</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h4 class="requirement-title">صعوبة التدريب</h4>
+                    <p class="requirement-desc">يعتبر تدريب القوات البحرية من اصعب التدريبات في العسكرية فيطلب الصبر و التحمل والنفس الطويل داخل محيط البحر</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-helicopter"></i>
+                    </div>
+                    <h4 class="requirement-title">طرق الدخول</h4>
+                    <p class="requirement-desc">الدخول البحري يكون عن طريق الطيران (طائرة هليكوبتر) او الدخول عن طريق السفن ويتم عن طريق اسقاط المقاتلين في البحر</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h4 class="requirement-title">الاستعداد للسيناريوهات</h4>
+                    <p class="requirement-desc">في حال وجود سيناريو بحري، يجب الاستعداد والتوجه الى اقرب كراجات طيران او سفن لديك والتأكد من العتاد الكامل</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4 class="requirement-title">سرعة الاستجابة</h4>
+                    <p class="requirement-desc">لابد ان تكون شخصية الفرد في الدورة سريعة الأستجابه وردة الفعل سريعه وتحمل الضغط والاستعداد لأي شيء يمكن ان يحصل مهما كان</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <h4 class="requirement-title">شروط التقديم</h4>
+                    <p class="requirement-desc">التقديم على الدورة لكافة القطاعات العسكرية ومن رتبة عريف وما فوق</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4 class="requirement-title">المشاركة العامة</h4>
+                    <p class="requirement-desc">يحق للقوات البحرية المشاركة في جميع السيناروهات بشكل عام</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-equals"></i>
+                    </div>
+                    <h4 class="requirement-title">المساواة الميدانية</h4>
+                    <p class="requirement-desc">في حال دخول الفرقه ويتم الانصياع للأوامر من القائد والنائب، لايوجد فرق بين الضابط والفرد الجميع سواسيه وعملهم ميداني واحد فقط</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-crosshairs"></i>
+                    </div>
+                    <h4 class="requirement-title">التعامل مع المجرمين</h4>
+                    <p class="requirement-desc">التخلص من السارقين او المجرمين بشكل احترافي جداً وفي اسرع وقت ممكن</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4 class="requirement-title">سرعة الاستيعاب</h4>
+                    <p class="requirement-desc">الاستيعاب البطيء يعرضك للاستبعاد من الدورة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-eye-slash"></i>
+                    </div>
+                    <h4 class="requirement-title">الدخول المخفي</h4>
+                    <p class="requirement-desc">القوات البحرية تعتمد على الغوص في البحر بشكل غير واضح للعدو والدخول بشكل مخفي جداً والتعامل مع المجرم او السارق</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-swimmer"></i>
+                    </div>
+                    <h4 class="requirement-title">مهارات الغوص</h4>
+                    <p class="requirement-desc">القوات البحرية تعتمد على الغوص والسباحه في البحر وقع الكيلومترات سباحة وغوص</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-volume-mute"></i>
+                    </div>
+                    <h4 class="requirement-title">منع إصدار الأصوات</h4>
+                    <p class="requirement-desc">يمنع منعاً باتاً الاقتراب بسفينه لموقع المجرمين او اصدار صوت يوضح للعدو موقعك ويتم مصادرة السفن او الطائره في مكان بعيد</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h4 class="requirement-title">البعد عن الموقع</h4>
+                    <p class="requirement-desc">يمنع منعاً باتاً الاقتراب من موقع السيناريو البحري ويكون وجودك بعيد جداً عن موقع والدخول بعد العد من المراقب في الشات</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h4 class="requirement-title">العمل الطبيعي</h4>
+                    <p class="requirement-desc">يتم العمل في القوات البحرية بشكل طبيعي وانت مباشر عملك ومسجل دخولك ولاكن يتم فرزك من قبل المسائيل كقوات بحرية في السيناروهات</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-parachute-box"></i>
+                    </div>
+                    <h4 class="requirement-title">التميز في الدخول</h4>
+                    <p class="requirement-desc">تتميز القوات البحرية بدخول البحري عن طريق الجو من طائرة هيلكوبتر والسقوط في البحر والغوص والتوجه للموقع المطلوب</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h4 class="requirement-title">السرية التامة</h4>
+                    <p class="requirement-desc">يمنع الكشف عن القوات البحريه نهائياً في اي سيناريو ويتم عملهم بشكل سري تحت قيادة قائد القوات البحرية ونائب القوات البحرية</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4 class="requirement-title">المشاركة بدون إعلان</h4>
+                    <p class="requirement-desc">يسمح بمشاركتهم في اي سيناريو بدون اعلان رسمي لفرد القوات البحرية</p>
+                </div>
+            </div>
+            
+            <div class="final-requirements">
+                <h3 class="final-title">الشروط النهائية للانضمام</h3>
+                <div class="final-list">
+                    <div class="final-item">
+                        <i class="fas fa-check"></i>
+                        <span>ان يكون المتقدم تابع لقطاع عسكري او حربي او تابع وزارة العدل</span>
+                    </div>
+                    <div class="final-item">
+                        <i class="fas fa-check"></i>
+                        <span>ان يكون رتبة عريف و مدعي عام وفوق</span>
+                    </div>
+                    <div class="final-item">
+                        <i class="fas fa-check"></i>
+                        <span>السمعة الحسنة بين الافراد والمسؤولين</span>
+                    </div>
+                    <div class="final-item">
+                        <i class="fas fa-check"></i>
+                        <span>الخبرات والامكانيات العسكرية</span>
+                    </div>
+                    <div class="final-item">
+                        <i class="fas fa-check"></i>
+                        <span>اجتياز الدورة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">القوات البحرية - Rise RP</h3>
+            <p class="footer-description">
+                حماة البحار والمياه الإقليمية
+            </p>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">الرئيسية</a>
+                <a href="military-rules.html" class="footer-link">القوانين العسكرية</a>
+                <a href="public-security.html" class="footer-link">الأمن العام</a>
+                <a href="defense-ministry.html" class="footer-link">وزارة الدفاع</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rise RP Server. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

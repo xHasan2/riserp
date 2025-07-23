@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise RP | كتيبة الموت - النخبة المقاتلة</title>
+    <link rel="icon" type="image/jpg" href="./img/icon.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --death-primary: #000000;
+            --death-secondary: #1a1a1a;
+            --death-accent: #dc2626;
+            --text-light: #ffffff;
+            --text-secondary: #cbd5e1;
+            --bg-dark: #0f0f0f;
+            --glass-bg: rgba(0, 0, 0, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-primary: 0 25px 50px -12px rgba(220, 38, 38, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #0a0a0a 50%, var(--death-primary) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/MWT.png') center/contain no-repeat;
+            opacity: 0.04;
+            z-index: -1;
+            animation: deathPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes deathPulse {
+            0%, 100% { 
+                opacity: 0.04; 
+                transform: scale(1);
+                filter: brightness(0.8);
+            }
+            50% { 
+                opacity: 0.08; 
+                transform: scale(1.01);
+                filter: brightness(1.2) contrast(1.2);
+            }
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(220, 38, 38, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(26, 26, 26, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--death-accent), var(--death-secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+            border: 1px solid var(--death-accent);
+        }
+
+        .hero-section {
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(220, 38, 38, 0.1));
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--death-primary), var(--death-accent));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-primary);
+            border: 1px solid var(--death-accent);
+        }
+
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--death-accent), #ff4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .unit-info-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--death-primary), var(--death-accent));
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-primary);
+            border-color: var(--death-accent);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--death-primary), var(--death-accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            border: 1px solid var(--death-accent);
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .info-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .mission-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .mission-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .mission-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .requirements-section {
+            margin: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-banner {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--death-primary), var(--death-accent));
+            color: var(--text-light);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-primary);
+            border: 2px solid var(--death-accent);
+        }
+
+        .greeting-section {
+            margin: 1rem 0 2rem;
+        }
+
+        .greeting-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .execution-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .execution-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--death-accent);
+            margin-bottom: 2rem;
+        }
+
+        .execution-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .execution-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(220, 38, 38, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            border: 1px solid var(--death-accent);
+            min-width: 300px;
+            justify-content: flex-start;
+        }
+
+        .execution-item i {
+            color: var(--death-accent);
+            font-size: 1.2rem;
+        }
+
+        .acceptance-requirements {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .acceptance-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .acceptance-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .acceptance-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            border: 1px solid var(--death-accent);
+            min-width: 300px;
+            justify-content: flex-start;
+        }
+
+        .acceptance-item i {
+            color: var(--death-accent);
+            font-size: 1.2rem;
+        }
+
+        .rejection-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .rejection-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--death-accent);
+            margin-bottom: 2rem;
+        }
+
+        .rejection-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .rejection-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(220, 38, 38, 0.15);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            border: 1px solid var(--death-accent);
+            min-width: 300px;
+            justify-content: flex-start;
+        }
+
+        .rejection-item i {
+            color: var(--death-accent);
+            font-size: 1.2rem;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .requirement-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .requirement-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--death-accent);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .requirement-icon {
+            font-size: 2rem;
+            color: var(--death-accent);
+            margin-bottom: 1rem;
+        }
+
+        .requirement-title {
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .requirement-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--death-primary), var(--bg-dark));
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--death-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero-title { font-size: 2.5rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .requirements-grid { grid-template-columns: 1fr; }
+            .footer-links { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <span>Rise RP</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="military-rules.html" class="nav-link"><i class="fas fa-shield-alt"></i> القوانين العسكرية</a></li>
+                <li><a href="marines.html" class="nav-link"><i class="fas fa-skull-crossbones"></i> المارينز</a></li>
+                <li><a href="commandos.html" class="nav-link"><i class="fas fa-bolt"></i> الصاعقة</a></li>
+                <li><a href="navy.html" class="nav-link"><i class="fas fa-ship"></i> القوات البحرية</a></li>
+                <li><a href="airforce.html" class="nav-link"><i class="fas fa-fighter-jet"></i> القوات الجوية</a></li>
+                <li><a href="intelligence.html" class="nav-link"><i class="fas fa-search"></i> البحث والتحري</a></li>
+                <li><a href="death-battalion.html" class="nav-link active"><i class="fas fa-skull"></i> كتيبة الموت</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <i class="fas fa-skull"></i>
+                <span>النخبة المقاتلة الأقوى</span>
+            </div>
+            <h1 class="hero-title">
+                كتيبة <span class="highlight">الموت</span>
+            </h1>
+            <p class="hero-subtitle">
+                الوحدة النخبوية الأكثر تدريباً وقوة، متخصصة في المهام المستحيلة والعمليات عالية الخطورة
+            </p>
+        </div>
+    </section>
+
+    <div class="unit-info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3 class="info-title">المهام عالية الخطورة</h3>
+                <p class="info-description">
+                    تنفيذ المهام الأكثر خطورة وصعوبة التي تتطلب مستوى استثنائي من المهارة والشجاعة
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-fist-raised"></i>
+                </div>
+                <h3 class="info-title">القوة القصوى</h3>
+                <p class="info-description">
+                    أعضاء الكتيبة يمتلكون أعلى مستويات القوة البدنية والعقلية والتدريب المتقدم
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-crosshairs"></i>
+                </div>
+                <h3 class="info-title">الدقة المطلقة</h3>
+                <p class="info-description">
+                    دقة متناهية في تنفيذ العمليات دون أخطاء أو هامش للفشل
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-shield-virus"></i>
+                </div>
+                <h3 class="info-title">مقاومة لا محدودة</h3>
+                <p class="info-description">
+                    قدرة على تحمل أصعب الظروف والعمل في بيئات قاسية ومعادية
+                </p>
+            </div>
+        </div>
+
+        <div class="mission-section">
+            <h2 class="mission-title">من نحن</h2>
+            <p class="mission-description">
+هي كتيبة تابعة لوزارة الدفاع وهي كتيبة قتالية يمتاز افرادها بقوة التحمل وشدة البأس حيث يجب على العسكري المرور بعدة مراحل للدخول الى الكتيبة ، وتمتاز الكتيبة بعمل اقتحامات شبه مستحيلة والقبض على المجرمين بكل سرعة واحترافية 
+
+            </p>
+        </div>
+
+        <div class="requirements-section">
+            <div class="section-header">
+                <div class="section-banner">
+                    <span>بسم الله الرحمن الرحيم</span>
+                </div>
+                <div class="greeting-section">
+                    <p class="greeting-text">السلام عليكم ورحمة الله وبركاته</p>
+                </div>
+                <h2 class="section-title">قوانين كتيبة الموت</h2>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h4 class="requirement-title">تفعيل الكتيبة</h4>
+                    <p class="requirement-desc">لا يتم تفعيل كتيبة الموت الا بوجود احد المسؤولين او القادة او المشرفين</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4 class="requirement-title">تمشيط الخط السريع</h4>
+                    <p class="requirement-desc">يسمح لكتيبة الموت تمشيط الخط السريع ومداهمة الاماكن المشبوهة بدون سابق انذار [بدون اعلان] بأذن من المسؤولين و قادة الكتيبة والمشرفين فقط</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4 class="requirement-title">المداهمات السرية</h4>
+                    <p class="requirement-desc">يحق لكتيبة الموت عمل مداهمات سرية على مقرات العصابات مرتين يومياً</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-crosshairs"></i>
+                    </div>
+                    <h4 class="requirement-title">الكمائن الأمنية</h4>
+                    <p class="requirement-desc">يحق لكتيبة الموت عمل كمين في جميع مدن الدولة لردع كل من يحاول زعزعة امن البلاد</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-volume-mute"></i>
+                    </div>
+                    <h4 class="requirement-title">منع التحدث</h4>
+                    <p class="requirement-desc">يمنع على فرد الكتيبة في حال تسجيل دخوله التحدث نهائياً (الا بأذن) ولا يستطيع التحدث سوى القائد والنائب و المشرفين للضرورة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4 class="requirement-title">العدد المطلوب</h4>
+                    <p class="requirement-desc">لا يتم تفعيل الكتيبة الا في حالة وجود 7 اشخاص من الكتيبة و نزول اعلان</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4 class="requirement-title">تفعيل القادة</h4>
+                    <p class="requirement-desc">يحق لقادة وزارة الدفاع تفعيل الكتيبة في حال وجود 5 اعضاء واكثر</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h4 class="requirement-title">منع الاستهبال</h4>
+                    <p class="requirement-desc">اي استهبال في الميدان او استهتار في الافصاح عن انتماءك لكتيبة الموت يعرضك للاستبعاد الفوري</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-fighter-jet"></i>
+                    </div>
+                    <h4 class="requirement-title">التعاون مع القوات الجوية</h4>
+                    <p class="requirement-desc">يحق لكتيبة الموت المشاركة مع القوات الجوية الملكية واستخدام معداتهم في المهمات العسكرية</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h4 class="requirement-title">المهام العسكرية</h4>
+                    <p class="requirement-desc">يحق لكتيبة الموت التوجه لجميع المهام العسكرية</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h4 class="requirement-title">الإعلان الرسمي</h4>
+                    <p class="requirement-desc">يتم تفعيل كتيبة الموت بإعلان وزارة الدفاع لتنبيه المواطنين بوجود الكتيبة في جميع المدن</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4 class="requirement-title">التعاون مع الأقسام</h4>
+                    <p class="requirement-desc">يحق لكتيبة الموت التعاون مع جميع أقسام الداخلية وأجهزة الدولة للقبض على المجرمين</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h4 class="requirement-title">الاختبار الميداني</h4>
+                    <p class="requirement-desc">اختبار كتيبة الموت هو اختبار ميداني و في حالات استثنائية قد يكون ميداني و الكتروني</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h4 class="requirement-title">العمليات الخاصة</h4>
+                    <p class="requirement-desc">يمنع على أي عضو اشراك شخص خارج كتيبة الموت في العمليات الخاصة ويحق للمشرفين والقادة ذلك</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <h4 class="requirement-title">المباشرة بدون تفعيل</h4>
+                    <p class="requirement-desc">يحق لقادة و مشرفين الكتيبة المباشرة بدون تفعيل</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-megaphone"></i>
+                    </div>
+                    <h4 class="requirement-title">الإعلان الرسمي للتفعيل</h4>
+                    <p class="requirement-desc">يتم تفعيل كتيبة الموت بأعلان رسمي من القطاع تحت اشراف مسؤولين وقادة ومشرفين الكتيبة فقط</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <h4 class="requirement-title">الرتب المصرحة</h4>
+                    <p class="requirement-desc">كتيبة الموت مصرحة لرتبة عريف وفوق</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h4 class="requirement-title">تكليف القائد</h4>
+                    <p class="requirement-desc">يحق لوزير الدفاع تكليف وانهاء تكليف قائد الكتيبة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <h4 class="requirement-title">دورية الاختبارات</h4>
+                    <p class="requirement-desc">يتم عمل اختبار للمتقدمين على كتيبة الموت في الشهر مرة الى مرتين</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h4 class="requirement-title">الأسلوب السيء</h4>
+                    <p class="requirement-desc">الأسلوب السيء مع الجميع سيعرضك للاستبعاد الفوري من الكتيبة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h4 class="requirement-title">التحدث للضرورة</h4>
+                    <p class="requirement-desc">في حال عدم وجود قائد و نائب يحق للمسؤول أو القائم بعملية التفعيل في كتيبة الموت الحق الكامل في التحدث أثناء فترة التفعيل للضرورة فقط</p>
+                </div>
+            </div>
+
+            <div class="execution-section">
+                <h3 class="execution-title">قوانين الاعدام لكتيبة الموت</h3>
+                <div class="execution-grid">
+                    <div class="execution-item">
+                        <i class="fas fa-comment"></i>
+                        <span>يسمح لعضو الكتيبة التحدث فقط للضرورة مثل ذكر الحقوق في حال القبض على مجرم</span>
+                    </div>
+                    <div class="execution-item">
+                        <i class="fas fa-user-shield"></i>
+                        <span>لا تتم اي حالة اعدامات الا بوجود احد مسؤولين الكتيبة او عضو من القوات الخاصة</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="acceptance-requirements">
+                <h3 class="acceptance-title">شروط القبول في كتيبة الموت</h3>
+                <div class="acceptance-list">
+                    <div class="acceptance-item">
+                        <i class="fas fa-check"></i>
+                        <span>ان يكون رتبة عريف وفوق</span>
+                    </div>
+                    <div class="acceptance-item">
+                        <i class="fas fa-check"></i>
+                        <span>ان يكون المتقدم تابع لقطاع عسكري</span>
+                    </div>
+                    <div class="acceptance-item">
+                        <i class="fas fa-check"></i>
+                        <span>الخبرات والامكانيات العسكرية</span>
+                    </div>
+                    <div class="acceptance-item">
+                        <i class="fas fa-check"></i>
+                        <span>يجب ان يكون تفاعلك في اخر اسبوع جيد</span>
+                    </div>
+                    <div class="acceptance-item">
+                        <i class="fas fa-check"></i>
+                        <span>السمعة الحسنة بين الافراد والمسؤولين</span>
+                    </div>
+                    <div class="acceptance-item">
+                        <i class="fas fa-check"></i>
+                        <span>اجتياز الفترة الاختبارية</span>
+                    </div>
+                    <div class="acceptance-item">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>السمعة السيئة قد تؤدي الى عدم قبولك في الكتيبة</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rejection-section">
+                <h3 class="rejection-title">من الامور التي تعرضك للرفض النهائي من كتيبة الموت</h3>
+                <div class="rejection-list">
+                    <div class="rejection-item">
+                        <i class="fas fa-times"></i>
+                        <span>في حال الاستهبال في الكتيبة راح يتم استبعادك من الكتيبة + محاسبتك</span>
+                    </div>
+                    <div class="rejection-item">
+                        <i class="fas fa-times"></i>
+                        <span>يحق للمشرفين محاسبة فرد الكتيبة بدون ارجوع الى قائد الكتيبة</span>
+                    </div>
+                    <div class="rejection-item">
+                        <i class="fas fa-times"></i>
+                        <span>عدم التزامك بالقيافة من ناحية شعر و وشوم و لحية طويلة واللبس الكامل يعرضك للإستبعاد</span>
+                    </div>
+                    <div class="rejection-item">
+                        <i class="fas fa-times"></i>
+                        <span>عدم الجدية في الميدان يعرضك للإستبعاد من الكتيبة</span>
+                    </div>
+                    <div class="rejection-item">
+                        <i class="fas fa-times"></i>
+                        <span>الاستيعاب البطيء والمتأخر يتم استبعادك فوراً</span>
+                    </div>
+                    <div class="rejection-item">
+                        <i class="fas fa-times"></i>
+                        <span>عدم احترام اي عضو من اعضاء الكتيبة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">كتيبة الموت - Rise RP</h3>
+            <p class="footer-description">
+                النخبة المقاتلة التي لا تقهر
+            </p>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">الرئيسية</a>
+                <a href="military-rules.html" class="footer-link">القوانين العسكرية</a>
+                <a href="public-security.html" class="footer-link">الأمن العام</a>
+                <a href="defense-ministry.html" class="footer-link">وزارة الدفاع</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rise RP Server. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

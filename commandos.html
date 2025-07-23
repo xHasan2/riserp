@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise RP | الصاعقة - وحدة العمليات السريعة</title>
+    <link rel="icon" type="image/jpg" href="./img/icon.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --commandos-primary: #ff6b00;
+            --commandos-secondary: #ff8c42;
+            --commandos-accent: #ffa500;
+            --text-light: #ffffff;
+            --text-secondary: #cbd5e1;
+            --bg-dark: #0f0f0f;
+            --glass-bg: rgba(255, 107, 0, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-primary: 0 25px 50px -12px rgba(255, 107, 0, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a0a00 50%, var(--commandos-primary) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/sa38h.png') center/contain no-repeat;
+            opacity: 0.05;
+            z-index: -1;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.05; }
+            50% { opacity: 0.1; }
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 165, 0, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 107, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--commandos-accent), var(--commandos-secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--bg-dark);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.3), rgba(255, 165, 0, 0.1));
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--commandos-primary), var(--commandos-secondary));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--commandos-accent), var(--commandos-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .unit-info-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--commandos-primary), var(--commandos-accent));
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--commandos-primary), var(--commandos-secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .info-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .mission-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .mission-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .mission-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .requirements-section {
+            margin: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-banner {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--commandos-primary), var(--commandos-secondary));
+            color: var(--text-light);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-primary);
+            border: 2px solid var(--commandos-accent);
+        }
+
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .final-requirements {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .final-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .final-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .final-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 107, 0, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            border: 1px solid var(--commandos-accent);
+            min-width: 300px;
+            justify-content: flex-start;
+        }
+
+        .final-item i {
+            color: var(--commandos-accent);
+            font-size: 1.2rem;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .requirement-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .requirement-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--commandos-accent);
+        }
+
+        .requirement-icon {
+            font-size: 2rem;
+            color: var(--commandos-accent);
+            margin-bottom: 1rem;
+        }
+
+        .requirement-title {
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .requirement-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--commandos-primary), var(--bg-dark));
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--commandos-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero-title { font-size: 2.5rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .requirements-grid { grid-template-columns: 1fr; }
+            .footer-links { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <span>Rise RP</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="military-rules.html" class="nav-link"><i class="fas fa-shield-alt"></i> القوانين العسكرية</a></li>
+                <li><a href="marines.html" class="nav-link"><i class="fas fa-skull-crossbones"></i> المارينز</a></li>
+                <li><a href="commandos.html" class="nav-link active"><i class="fas fa-bolt"></i> الصاعقة</a></li>
+                <li><a href="navy.html" class="nav-link"><i class="fas fa-ship"></i> القوات البحرية</a></li>
+                <li><a href="airforce.html" class="nav-link"><i class="fas fa-fighter-jet"></i> القوات الجوية</a></li>
+                <li><a href="intelligence.html" class="nav-link"><i class="fas fa-search"></i> البحث والتحري</a></li>
+                <li><a href="death-battalion.html" class="nav-link"><i class="fas fa-skull"></i> كتيبة الموت</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <i class="fas fa-bolt"></i>
+                <span>وحدة العمليات السريعة</span>
+            </div>
+            <h1 class="hero-title">
+                قوات <span class="highlight">الصاعقة</span>
+            </h1>
+            <p class="hero-subtitle">
+                وحدة النخبة المتخصصة في المهام الخاصة والعمليات السريعة والتدخل الفوري في المواقف الحرجة
+            </p>
+        </div>
+    </section>
+
+    <div class="unit-info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3 class="info-title">التدخل السريع</h3>
+                <p class="info-description">
+                    الاستجابة الفورية للحالات الطارئة والمواقف الحرجة بأقصى سرعة ممكنة
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-crosshairs"></i>
+                </div>
+                <h3 class="info-title">الدقة في التنفيذ</h3>
+                <p class="info-description">
+                    تنفيذ العمليات بدقة متناهية وكفاءة عالية في أصعب الظروف
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-stopwatch"></i>
+                </div>
+                <h3 class="info-title">السرعة</h3>
+                <p class="info-description">
+                    أسرع وحدة عسكرية في الخادم مع قدرة على الحركة والانتشار الفوري
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3 class="info-title">التجهيزات المتطورة</h3>
+                <p class="info-description">
+                    استخدام أحدث المعدات والتقنيات للوصول لأعلى مستويات الأداء
+                </p>
+            </div>
+        </div>
+
+        <div class="mission-section">
+            <h2 class="mission-title">من نحن</h2>
+            <p class="mission-description">
+ كتيبة حربية تختص بمن هم نخبة النخبة في دولة رايز و في جميع الوزارات الحربية ممن اجتازوا مراحل قبول في دورة الصاعقة الصارمة 
+            </p>
+        </div>
+
+        <div class="requirements-section">
+            <div class="section-header">
+                <div class="section-banner">
+                    <span>دورة الصاعقة</span>
+                </div>
+                <h2 class="section-title">قوانين وأحكام دورة الصاعقة</h2>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4 class="requirement-title">القيافة العسكرية</h4>
+                    <p class="requirement-desc">عدم التزامك بالقيافة من ناحية شعر و وشوم و لحية طويلة والبس الكامل يعرضك للإستبعاد</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h4 class="requirement-title">تنفيذ الأوامر</h4>
+                    <p class="requirement-desc">عدم تنفيذك لأوامر المدربين يعرضك للمحاسبة وقد تصل الى استبعاد من الدورة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4 class="requirement-title">الجدية في التدريب</h4>
+                    <p class="requirement-desc">عدم الجدية في الدورة يعرضك للإستبعاد</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h4 class="requirement-title">منع الغش</h4>
+                    <p class="requirement-desc">يعتبر الغش في الدورة شيء ممنوع و سوف تتم محاسبة المخالف</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h4 class="requirement-title">خبرة المدربين</h4>
+                    <p class="requirement-desc">مدربين الصاعقة هم اكثر المدربين احترافية و خبرة في هذا المجال</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h4 class="requirement-title">صعوبة التدريب</h4>
+                    <p class="requirement-desc">يعتبر تدريب الصاعقة من اصعب التدريبات في العسكرية فيطلب الصبر و التحمل</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4 class="requirement-title">اختبار الضغط النفسي</h4>
+                    <p class="requirement-desc">يحق لمدربين الصاعقة معاملتك بشكل سيء لأختبار الضغط النفسي و حق لهم معاقبتك على المخالفة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-backpack"></i>
+                    </div>
+                    <h4 class="requirement-title">التجهيزات المطلوبة</h4>
+                    <p class="requirement-desc">في حال بدأ الدورة يجب التخلص من جميع الممنوعات واحضارالاسلحة و الطعام و الشراب</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-door-open"></i>
+                    </div>
+                    <h4 class="requirement-title">حق الطرد</h4>
+                    <p class="requirement-desc">يحق لمدربين الصاعقة طردك من الدورة لاي سبب يرونة مناسب</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h4 class="requirement-title">تنفيذ الطلبات</h4>
+                    <p class="requirement-desc">يحق لمدرب الصاعقة طلب من المتدرب اي طلب مهما كان و يجب عليك تنفيذها</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4 class="requirement-title">سرعة الاستجابة</h4>
+                    <p class="requirement-desc">لابد ان تكون شخصية الفرد في الدورة سريعة الأستجابه والردة الفعل سريعه وتحمل الضغط والاستعداد لأي شيء يمكن ان يحصل مهما كان</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <h4 class="requirement-title">شروط التقديم</h4>
+                    <p class="requirement-desc">التقديم على الدورة لكافة القطاعات العسكرية ومن رتبة وكيل رقيب " وما فوق "</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4 class="requirement-title">معرفة الأنظمة</h4>
+                    <p class="requirement-desc">جهلك لبعض الأنظمة لا يعد سبب مقنع في الدورة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-equals"></i>
+                    </div>
+                    <h4 class="requirement-title">المساواة في التدريب</h4>
+                    <p class="requirement-desc">في حال دخول دورة الصاعقة لايوجد فرق بين الضابط والفرد الجميع سواسيه ولا يتم التفريق بينهم</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h4 class="requirement-title">الانتداب العسكري</h4>
+                    <p class="requirement-desc">الحاصلين على دورة الصاعقة سيتم انتدابهم لأي قطاع عسكري يحتاج الدعم وتكون عودتهم لقطاعهم الأساسي بعدما تنتهي فترة الأنتداب المقررة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4 class="requirement-title">سرعة الاستيعاب</h4>
+                    <p class="requirement-desc">الاستيعاب البطيء والمتأخر يتم استبعادك فوراً</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="requirement-title">التدريب الخاص</h4>
+                    <p class="requirement-desc">هي عبارة عن قوات يتم تدريبها تدريباً خاص وهذا التدريب يكون قاسياً للغاية وذلك لزيادة قدرة التحمل ويكون ذلك خلافاً لباقي فروع الجيش</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <h4 class="requirement-title">السير الطويل</h4>
+                    <p class="requirement-desc">السير الطويل الذي يصل إلى 300 كيلو</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h4 class="requirement-title">الهرولة بالعتاد</h4>
+                    <p class="requirement-desc">الهرولة والتي تكون من 80 كيلو الى 120 كيلو بالعتاد والأدوات مثل الأسلحة وجميع المعدات</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4 class="requirement-title">أسبوع التعايش</h4>
+                    <p class="requirement-desc">هناك في الدورة أسبوع يسمى (أسبوع التعايش) وفيه يقوم المتدرب بتناول الثعابين</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <h4 class="requirement-title">التدريب الشاق</h4>
+                    <p class="requirement-desc">أسبوع التدريب الشاق حيث يتعرض المتدرب إلى الحرمان والقسوة والضرب وذلك لتدريبه على التمسك والتحمل في حالة أنه وقع أسيراً في الحرب</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h4 class="requirement-title">أولوية القوى الجوية</h4>
+                    <p class="requirement-desc">اعطاء الاولوية لمجند الصاعقة باستخدام القوى الجوية في المهمات الخاصة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4 class="requirement-title">المشاركة الحرة</h4>
+                    <p class="requirement-desc">يسمح بمشاركتهم في اي سيناريو بدون اعلان رسمي لفرد الصاعقة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h4 class="requirement-title">قيود الطعام</h4>
+                    <p class="requirement-desc">يمنع الاكل بدون موافقة المدربين</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-calendar-times"></i>
+                    </div>
+                    <h4 class="requirement-title">منع التغيب</h4>
+                    <p class="requirement-desc">في حال تغيبك عن الدورة او اي يوم من ايام الدورة أو تأخرك يعرضك لاستبعاد مباشرة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-exclamation"></i>
+                    </div>
+                    <h4 class="requirement-title">عدم قبول الأعذار</h4>
+                    <p class="requirement-desc">لايقبل اي عذر في التأخر عن الدورة بسبب ضيق الوقت وكثرة العدد في حال لاتستطيع الحضور لا يجب عليك التقديم على الدورة من البداية</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h4 class="requirement-title">اللبس الخاص</h4>
+                    <p class="requirement-desc">يعتمد لبس خاص لدورة الصاعقة في جميع السيناريوهات او المداهمات</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-sort-amount-up"></i>
+                    </div>
+                    <h4 class="requirement-title">الصف الخاص</h4>
+                    <p class="requirement-desc">يجب وضع صف خاص للحاصلين على الصاعقة اثناء السيناريوهات او المداهمات</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h4 class="requirement-title">منع الدخول المباشر</h4>
+                    <p class="requirement-desc">ولا يعتبر لديك صاعقة الدخول لموقع السارقين داخل الموقع ويحق للعصابات خطفك</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4 class="requirement-title">الاحترام والتواضع</h4>
+                    <p class="requirement-desc">يجب على جميع الحاصلين على دورة الصاعقة احترام الجميع وعدم التفاخر او الغرور او عدم احترام المجرمين او زملائك العساكر ويعرضك ذلك لسحب الدورة منك ومحاسبتك في قطاعك</p>
+                </div>
+            </div>
+            
+            <div class="final-requirements">
+                <h3 class="final-title">شروط القبول لدورة الصاعقة</h3>
+                <div class="final-list">
+                    <div class="final-item">
+                        <i class="fas fa-check"></i>
+                        <span>ان يكون المتقدم تابع لقطاع عسكري او حربي</span>
+                    </div>
+                    <div class="final-item">
+                        <i class="fas fa-check"></i>
+                        <span>ان يكون رتبة وكيل رقيب وفوق</span>
+                    </div>
+                    <div class="final-item">
+                        <i class="fas fa-check"></i>
+                        <span>السمعة الحسنة بين الافراد والمسؤولين</span>
+                    </div>
+                    <div class="final-item">
+                        <i class="fas fa-check"></i>
+                        <span>اجتياز المقابلة الشخصية</span>
+                    </div>
+                    <div class="final-item">
+                        <i class="fas fa-check"></i>
+                        <span>اجتياز الفترة الاختبارية</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">الصاعقة - Rise RP</h3>
+            <p class="footer-description">
+                السرعة والدقة في خدمة الأمن والاستقرار
+            </p>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">الرئيسية</a>
+                <a href="military-rules.html" class="footer-link">القوانين العسكرية</a>
+                <a href="public-security.html" class="footer-link">الأمن العام</a>
+                <a href="defense-ministry.html" class="footer-link">وزارة الدفاع</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rise RP Server. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

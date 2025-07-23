@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rise RP | الأمن العام</title>
+    <title>Rise RP | الحرس الملكي</title>
     <link rel="icon" type="image/jpg" href="./img/icon.png"/>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -17,7 +17,7 @@
             --bg-card: rgba(44, 24, 16, 0.9);
             --shadow: 0 20px 40px rgba(139, 0, 0, 0.4);
             --gradient: linear-gradient(135deg, #8b0000 0%, #ff4500 50%, #ffa500 100%);
-            --blue-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+            --royal-gradient: linear-gradient(135deg, #00a52d 0%, #22c55e 50%, #4ade80 100%);
         }
 
         * {
@@ -105,11 +105,11 @@
         }
 
         .navbar {
-            background: rgba(30, 58, 138, 0.95);
+            background: rgba(0, 165, 45, 0.95);
             backdrop-filter: blur(15px);
             padding: 1.5rem 2rem;
-            border-bottom: 3px solid #60a5fa;
-            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+            border-bottom: 3px solid #4ade80;
+            box-shadow: 0 10px 30px rgba(0, 165, 45, 0.3);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -126,34 +126,15 @@
         .logo {
             font-size: 2.2rem;
             font-weight: 900;
-            color: #60a5fa;
+            color: #4ade80;
             text-decoration: none;
-            text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+            text-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
             transition: all 0.3s ease;
         }
 
         .logo:hover {
             transform: scale(1.05);
-            text-shadow: 0 0 30px rgba(96, 165, 250, 0.8);
-        }
-
-        .back-btn {
-            background: var(--blue-gradient);
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
-            border: 2px solid rgba(96, 165, 250, 0.3);
-        }
-
-        .back-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.6);
-            border-color: rgba(96, 165, 250, 0.8);
+            text-shadow: 0 0 30px rgba(74, 222, 128, 0.8);
         }
 
         .container {
@@ -167,10 +148,10 @@
             margin-bottom: 4rem;
             padding: 3rem 0;
             position: relative;
-            background: rgba(30, 58, 138, 0.1);
+            background: rgba(0, 165, 45, 0.1);
             border-radius: 25px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(96, 165, 250, 0.2);
+            border: 1px solid rgba(74, 222, 128, 0.2);
         }
 
         .hero::before {
@@ -200,7 +181,7 @@
         .hero-icon {
             width: 120px;
             height: 120px;
-            background: var(--blue-gradient);
+            background: var(--royal-gradient);
             border-radius: 30px;
             display: flex;
             align-items: center;
@@ -208,7 +189,7 @@
             margin: 0 auto 2rem;
             font-size: 3rem;
             color: white;
-            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 165, 45, 0.5);
             position: relative;
             z-index: 2;
             transition: all 0.3s ease;
@@ -216,20 +197,20 @@
 
         .hero-icon:hover {
             transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 20px 50px rgba(30, 58, 138, 0.7);
+            box-shadow: 0 20px 50px rgba(0, 165, 45, 0.7);
         }
 
         .hero h1 {
             font-size: 3.5rem;
             font-weight: 900;
-            background: var(--blue-gradient);
+            background: var(--royal-gradient);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 1.5rem;
             position: relative;
             z-index: 2;
-            text-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+            text-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
         }
 
         .hero p {
@@ -237,14 +218,14 @@
             opacity: 0.95;
             max-width: 700px;
             margin: 0 auto;
-            background: rgba(30, 58, 138, 0.3);
+            background: rgba(0, 165, 45, 0.3);
             padding: 1.5rem 2.5rem;
             border-radius: 20px;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(96, 165, 250, 0.4);
+            border: 2px solid rgba(74, 222, 128, 0.4);
             position: relative;
             z-index: 2;
-            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 165, 45, 0.3);
         }
 
         .search-container {
@@ -256,14 +237,14 @@
             width: 100%;
             max-width: 600px;
             padding: 1.5rem 2rem;
-            border: 3px solid rgba(96, 165, 250, 0.4);
+            border: 3px solid rgba(74, 222, 128, 0.4);
             border-radius: 25px;
-            background: rgba(30, 58, 138, 0.15);
+            background: rgba(0, 165, 45, 0.15);
             color: var(--text-light);
             font-size: 1.1rem;
             font-family: 'Cairo', sans-serif;
             backdrop-filter: blur(15px);
-            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 165, 45, 0.3);
             transition: all 0.3s ease;
         }
 
@@ -273,8 +254,8 @@
 
         .search-box:focus {
             outline: none;
-            border-color: #60a5fa;
-            box-shadow: 0 0 30px rgba(96, 165, 250, 0.5);
+            border-color: #4ade80;
+            box-shadow: 0 0 30px rgba(74, 222, 128, 0.5);
             transform: scale(1.02);
         }
 
@@ -286,15 +267,15 @@
         }
 
         .rule-item {
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.2) 0%, rgba(44, 24, 16, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(0, 165, 45, 0.2) 0%, rgba(44, 24, 16, 0.9) 100%);
             border-radius: 20px;
             padding: 2.5rem;
-            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.4);
-            border: 2px solid rgba(96, 165, 250, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 165, 45, 0.4);
+            border: 2px solid rgba(74, 222, 128, 0.2);
             transition: all 0.4s ease;
             position: relative;
             backdrop-filter: blur(15px);
-            border-right: 6px solid #60a5fa;
+            border-right: 6px solid #4ade80;
             overflow: hidden;
         }
 
@@ -305,7 +286,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(96, 165, 250, 0.1) 50%, transparent 70%);
+            background: linear-gradient(45deg, transparent 30%, rgba(74, 222, 128, 0.1) 50%, transparent 70%);
             transform: translateX(-100%);
             transition: transform 0.6s ease;
         }
@@ -328,8 +309,8 @@
 
         .rule-item:hover {
             transform: translateX(-10px) translateY(-5px);
-            box-shadow: 0 25px 60px rgba(30, 58, 138, 0.6);
-            border-color: rgba(96, 165, 250, 0.8);
+            box-shadow: 0 25px 60px rgba(0, 165, 45, 0.6);
+            border-color: rgba(74, 222, 128, 0.8);
             border-right-width: 8px;
         }
 
@@ -344,7 +325,7 @@
             right: 25px;
             width: 50px;
             height: 50px;
-            background: var(--blue-gradient);
+            background: var(--royal-gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -352,16 +333,16 @@
             font-size: 1.2rem;
             font-weight: 900;
             color: white;
-            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 165, 45, 0.5);
             z-index: 2;
             transition: all 0.3s ease;
-            border: 3px solid rgba(96, 165, 250, 0.3);
+            border: 3px solid rgba(74, 222, 128, 0.3);
         }
 
         .rule-item:hover .rule-number {
             transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.7);
-            border-color: rgba(96, 165, 250, 0.8);
+            box-shadow: 0 15px 35px rgba(0, 165, 45, 0.7);
+            border-color: rgba(74, 222, 128, 0.8);
         }
 
         .rule-content {
@@ -375,12 +356,146 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-btn {
+            background: rgba(74, 222, 128, 0.2);
+            border: 2px solid rgba(74, 222, 128, 0.4);
+            color: var(--text-light);
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(74, 222, 128, 0.2);
+        }
+
+        .dropdown-btn:hover {
+            background: rgba(74, 222, 128, 0.3);
+            border-color: rgba(74, 222, 128, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
+        }
+
+        .dropdown-btn i {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .dropdown:hover .dropdown-btn i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: rgba(34, 122, 68, 0.92);
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(74, 222, 128, 0.3);
+            min-width: 220px;
+            animation: dropdownShow 0.3s ease;
+        }
+
+        @keyframes dropdownShow {
+            from {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: block;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(74, 222, 128, 0.3);
+            border-color: rgba(74, 222, 128, 0.5);
+            transform: translateX(-3px);
+            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.2);
+        }
+
+        .dropdown-item.active {
+            background: rgba(74, 222, 128, 0.4);
+            border-color: rgba(74, 222, 128, 0.6);
+            font-weight: 700;
+            color: #ffffff;
+            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.3);
+        }
+
+        .dropdown-item.active::before {
+            content: '●';
+            position: absolute;
+            left: 0.5rem;
+            color: #4ade80;
+            font-size: 1.2rem;
+        }
+
+        .nav-item.home-btn {
+            background: var(--royal-gradient);
+            border: 2px solid rgba(74, 222, 128, 0.4);
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 165, 45, 0.3);
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-item.home-btn:hover {
+            background: linear-gradient(135deg, #22c55e 0%, #4ade80 50%, #86efac 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 165, 45, 0.5);
+        }
+
         .footer {
             text-align: center;
             padding: 4rem 0;
             margin-top: 5rem;
-            border-top: 2px solid rgba(96, 165, 250, 0.3);
-            background: rgba(30, 58, 138, 0.1);
+            border-top: 2px solid rgba(74, 222, 128, 0.3);
+            background: rgba(0, 165, 45, 0.1);
             border-radius: 25px 25px 0 0;
             backdrop-filter: blur(10px);
         }
@@ -423,138 +538,6 @@
             .hero { padding: 2rem 1rem; }
             .search-box { padding: 1.2rem 1.5rem; }
         }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-btn {
-            background: rgba(96, 165, 250, 0.2);
-            border: 2px solid rgba(96, 165, 250, 0.4);
-            color: var(--text-light);
-            font-size: 1rem;
-            font-weight: 600;
-            padding: 0.8rem 1.5rem;
-            border-radius: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            transition: all 0.3s ease;
-            font-family: 'Cairo', sans-serif;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(96, 165, 250, 0.2);
-        }
-
-        .dropdown-btn:hover {
-            background: rgba(96, 165, 250, 0.3);
-            border-color: rgba(96, 165, 250, 0.6);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
-        }
-
-        .dropdown-btn i {
-            transition: transform 0.3s ease;
-            font-size: 0.8rem;
-        }
-
-        .dropdown:hover .dropdown-btn i {
-            transform: rotate(180deg);
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 110%;
-            right: 0;
-            background: rgba(59, 89, 152, 0.92);
-            border-radius: 15px;
-            padding: 1rem;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            z-index: 1000;
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(116, 163, 247, 0.3);
-            min-width: 220px;
-            animation: dropdownShow 0.3s ease;
-        }
-
-        @keyframes dropdownShow {
-            from {
-                opacity: 0;
-                transform: translateY(-10px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .dropdown-content.show {
-            display: block;
-        }
-
-        .dropdown-item {
-            color: var(--text-light);
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            display: block;
-            font-weight: 500;
-            font-size: 0.95rem;
-            margin-bottom: 0.3rem;
-            position: relative;
-            border: 1px solid transparent;
-        }
-
-        .dropdown-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .dropdown-item:hover {
-            background: rgba(96, 165, 250, 0.3);
-            border-color: rgba(96, 165, 250, 0.5);
-            transform: translateX(-3px);
-            box-shadow: 0 5px 15px rgba(96, 165, 250, 0.2);
-        }
-
-        .dropdown-item.active {
-            background: rgba(96, 165, 250, 0.4);
-            border-color: rgba(96, 165, 250, 0.6);
-            font-weight: 700;
-            color: #ffffff;
-            box-shadow: 0 5px 15px rgba(96, 165, 250, 0.3);
-        }
-
-        .dropdown-item.active::before {
-            content: '●';
-            position: absolute;
-            left: 0.5rem;
-            color: #60a5fa;
-            font-size: 1.2rem;
-        }
-
-        .nav-item.home-btn {
-            background: var(--blue-gradient);
-            border: 2px solid rgba(96, 165, 250, 0.4);
-            padding: 0.8rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 700;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
-        }
-
-        .nav-item.home-btn:hover {
-            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.5);
-        }
     </style>
 </head>
 <body>
@@ -583,14 +566,14 @@
                         القطاعات <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="dropdown-content">
-                        <a href="public-security.html" class="dropdown-item active">الأمن العام</a>
+                        <a href="public-security.html" class="dropdown-item">الأمن العام</a>
                         <a href="defense-ministry.html" class="dropdown-item">وزارة الدفاع</a>
                         <a href="state-security.html" class="dropdown-item">أمن الدولة</a>
                         <a href="swat-team.html" class="dropdown-item">فريق سوات</a>
                         <a href="health-ministry.html" class="dropdown-item">وزارة الصحة</a>
                         <a href="justice-ministry.html" class="dropdown-item">وزارة العدل</a>
                         <a href="grievance-office.html" class="dropdown-item">ديوان المظالم</a>
-                        <a href="royal-guard.html" class="dropdown-item">الحرس الملكي</a>
+                        <a href="royal-guard.html" class="dropdown-item active">الحرس الملكي</a>
                     </div>
                 </div>
                 <a href="index.html" class="nav-item home-btn">العودة للرئيسية</a>
@@ -601,10 +584,10 @@
     <div class="container">
         <div class="hero fade-in">
             <div class="hero-icon">
-                <i class="fas fa-shield-alt"></i>
+                <i class="fas fa-crown"></i>
             </div>
-            <h1>قوانين الأمن العام</h1>
-            <p>القوانين واللوائح الخاصة بقطاع الأمن العام وحفظ النظام في Rise RP</p>
+            <h1>قوانين الحرس الملكي</h1>
+            <p>القوانين واللوائح الخاصة بالحرس الملكي وحماية الشخصيات المهمة في Rise RP</p>
         </div>
 
         <div class="search-container">
@@ -615,189 +598,245 @@
             <div class="rule-item fade-in">
                 <div class="rule-number">1</div>
                 <div class="rule-content">
-                    التعامل الراقي والأسلوب الحسن مع المواطنين في جميع الأوقات والظروف.
+                    يجب على جميع منسوبي الحرس الملكي احترام وتقدير جميع الرتب العسكرية من أي قطاع كان
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">2</div>
                 <div class="rule-content">
-                    الصبر وعدم التقليل من شأن المواطن وعدم التعالي في الرتب العسكرية.
+                    عند مخالفة مواطن يجب عليك اخذ هويته ومن ثم مخالفته
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">3</div>
                 <div class="rule-content">
-                    في حال المطاردة يبدأ الصدم بعد 5 ثوانٍ وطلق على الكفرات بعد 10 ثوانٍ والقتل في حال عدم الاستجابة بعد 15 ثانية.
+                    يحق للحرس الملكي تفتيش المواطن في المدينة الاولى والثانيه والثالثه
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">4</div>
                 <div class="rule-content">
-                    نظام الترقيات يعتمد على تواجدك وجهدك في القطاع (إثبات نفسك).
+                    يحق لك تفتيش المواطن من الجوال فقط
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">5</div>
                 <div class="rule-content">
-                    يجب على العسكري استقبال الشكاوى داخل المركز بكل احترام وتقدير.
+                    يحقك لك مصادرة الممنوعات فقط والاسلحة والطلقات الغير مرخصة
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">6</div>
                 <div class="rule-content">
-                    يمنع تشغيل السفاتي بدون سبب (لعدم الإزعاج).
+                    ممنوع حفظ الممنوعات المصادرة لنفسك
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">7</div>
                 <div class="rule-content">
-                    في حال التفحيط أمام مركز الشرطة يتم إعطاؤه تحذير واحد وفي حالة عدم الإنصياع للأوامر طلق وقتل المجرم وسجنه 15 شهر.
+                    قبل إعطاء المواطن السجن يجب عليك ذکر تفاصيل المخالفة
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">8</div>
                 <div class="rule-content">
-                    يمنع الخروج عن الرول بلاي إلا بوجود إداري (أدمن).
+                    عند هروب المواطن منك وهو مكلبش تتضاعف عقوبته حتى عند موته
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">9</div>
                 <div class="rule-content">
-                    يسمح للعسكري بتفتيش المواطن ويسمح له تفتيش حقيبته داخل مركز الشرطة في حال عليه تعميم أو أخرج الأسلحة أمام العسكري والاستيلاء على الممنوعات ولا يسمح خارج المركز.
+                    عند التحقيق مع مواطن أو مخالفتة بمنع تدخل أي عسكري الا إذا كان من مسؤولين الحرس الملكي أو قيادة عليا من القطاعات العسكرية
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">10</div>
                 <div class="rule-content">
-                    الكفالة تعطى على طريقة مخالفة يمنع أخذها من المواطن ووضعها في رصيدك.
+                    يحق صدم الهارب بعد مضي 5 ثواني وفي حال توقفه عن الهرب يمنع صدمه
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">11</div>
                 <div class="rule-content">
-                    يمنع الخروج من المدينة الأولى إلا بأمر من المسؤول.
+                    يحق الطلق على الكفرات بعد 10 ثواني و قتل الشخص بعد 15 ثانيه
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">12</div>
                 <div class="rule-content">
-                    يجب على العسكري إعلام المتهم بتهمته قبل إدخال المتهم سيارة الشرطة من ثم إعلامه بحقوقه المدنية في المركز.
+                    الإلتزام بقوانين المرور وعدم قطع الاشارات إلا في الحالات الطارئة التي يتم فيها تشغيل السفاتي
+                </div>
+            </div>
+
+            <div class="rule-item fade-in">
+                <div class="rule-number">13</div>
+                <div class="rule-content">
+                    يمنع منعاً باتاً اعطاء اسلحة لأي شخص كان وعقوبتها فصل وسجن 15 شهر عسكرياً
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">14</div>
                 <div class="rule-content">
-                    يجب على العسكري عدم مخالفة قوانين المرور (قطع إشارة الخ...) إلا في حال تشغيل السفاتي.
+                    في حال عدم احترام المواطن مهمآ كان فصل فوري
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">15</div>
                 <div class="rule-content">
-                    يحق للمواطن طلب محامي مهما كانت تهمته.
+                    يمنع على أي عسكري التواجد بأستراحة المواطنين الإ بعد أخذ بريك او إجازة و عدم وجود إجتماعات عسكرية
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">16</div>
                 <div class="rule-content">
-                    في حال ركب المواطن في الدورية يكون طلق فوري على المواطن بدون تحذير.
+                    في حال هروب مواطن بعد ما تم أستيقافه يحق لك إطلاق النار عليه فوراً
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">17</div>
                 <div class="rule-content">
-                    في حال عدم وجود احترام من المواطن للعسكري أثناء أداء عمله يحق له سجنه بمدة لا تزيد عن 15 شهر.
+                    الحديقة الملكية يمنع بها لإفراد الحرس الملكي بإطلاق النار فورا مهما كان السبب و يجب الأنتظار حتى خروجة من الحديقة الملكية (وفي حال المطاردة أستمرت في الحديقة العامة أكثر من 3 دقايق يحق لك الأطلاق فوراً)
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">18</div>
                 <div class="rule-content">
-                    يمنع تواجد المواطنين داخل كراج الشرطة + السجن وفي حال التواجد يتم تحذيره للمرة الأولى ويتم سجنه 5 أشهر.
+                    يمنع تشغيل السفاتي بدون سبب
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">19</div>
                 <div class="rule-content">
-                    يحق للعسكري سجن أي شخص يدخل أي مركز عسكري في حال وجود إعلان ممنوع الاقتراب أو الدخول لمركز الشرطة بسيناريو.
+                    ممنوع سجن مسعف ويمنع مخالفتة
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">20</div>
                 <div class="rule-content">
-                    يجب ذكر في الإعلانات أن سيكون هناك سجن فوري وقتل في حال الدخول إلى مناطق ممنوعة.
+                    لا يحق للمواطن و العسكري طلب أدمن اثناء الإجرائات مع العسكري و في حال وجود مخالفة رول بلاي يجب التوجه إلى الدعم الفني
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">21</div>
                 <div class="rule-content">
-                    لا يحق لأي عسكري سجن شخص بدون ذكر سبب سجنه وإخباره بالمدة المحددة له.
+                    يمنع منعاً باتاً التدخل في شؤون القطاعات الاخرى
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">22</div>
                 <div class="rule-content">
-                    يجب على جميع منسوبي الوزارات العسكرية والمدنية أن يتعاونوا مع العساكر حين تم طلب الهوية وإبرازها له.
+                    اذا وجد طرفين في المشكلة يجب السماع من الطرفين قبل الحكم في القضية
+                </div>
+            </div>
+
+            <div class="rule-item fade-in">
+                <div class="rule-number">23</div>
+                <div class="rule-content">
+                    مخالفة الإوامر قد تعرضك إلى التحذير أو الفصل
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">24</div>
                 <div class="rule-content">
-                    في حالة رفض المتهم نهائياً وعدم تجاوبه في تسليم أسلحته والممنوعات يحق للعسكري الحصول عليها بالقوة الجبرية للاستعانة بأدمن في تلويت المتهم، أو تسليمه الأسلحة للعسكري.
+                    يحق للحرس الملكي في حال محاوله اغتيال احد من اعضاء الحرس او احد من اعضاء الاسره الحاكمه او احد من اعضاء مجلس الوزراء يحق له اعدامه بغرض العبرة
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">25</div>
                 <div class="rule-content">
-                    أعلى مدة لسجن المواطن 15 شهر كحد أقصى.
+                    يمنع على أي مواطن التفحيط أمام العسكري بإستقصاد أو بعمد لكي استفزاز العسكري ويحق للعسكري الطلق الفوري بعد الـ3 إنذارات ومابين إنذار وإنذار 10 ثواني
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">26</div>
                 <div class="rule-content">
-                    في حال أهان مواطن عسكري أو تلفظ مثل (هطف - يا المصخرة - سبك الخ.....) طلق فوري وسجن 15 شهر.
+                    قطاع الحرس الملكي هو قطاع تابع لمجلس الوزراء
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">27</div>
                 <div class="rule-content">
-                    في حال هروب مواطن بعد ما تم إيقافه يحق لك إطلاق النار عليه فوراً.
+                    يمنع سجن أو محاسبة الحرس الملكي ، من أي قطاع كان
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">28</div>
                 <div class="rule-content">
-                    لا يسمح بكلبشة المواطن وهو ميت.
+                    يتمتع الحرس الملكي بحصانة دبلوماسية (يمنع تفتيشه او اعطائه الإوامر العسكرية) الإوامر العسكرية تصدر من رئيس الوزراء - نائب رئيس الوزراء - قادات الحرس الملكي وزير الداخلية والنواب عنهم
                 </div>
             </div>
 
             <div class="rule-item fade-in">
                 <div class="rule-number">29</div>
                 <div class="rule-content">
-                    يحق للعسكري قتل المواطن في حال ضرب العسكري فوراً.
+                    يحق للحرس الملكي بـ الطلق الفوري في حال شعر بـ وجود خطر على حياته
+                </div>
+            </div>
+
+            <div class="rule-item fade-in">
+                <div class="rule-number">30</div>
+                <div class="rule-content">
+                    يسمح للحرس الملكي المشاركة بأي سيناريو عسكري بعد انزال الاعلان
+                </div>
+            </div>
+
+            <div class="rule-item fade-in">
+                <div class="rule-number">31</div>
+                <div class="rule-content">
+                    يجب على الحرس الملكي ان يكون مسلح لمدة 24 ساعة
+                </div>
+            </div>
+
+            <div class="rule-item fade-in">
+                <div class="rule-number">32</div>
+                <div class="rule-content">
+                    في حال كان السجين يحمل هوية قيادية يجب على العسكري بصرف تحية وإخلاء سبيله فورا بعد تقديم الاعتذار
+                </div>
+            </div>
+
+            <div class="rule-item fade-in">
+                <div class="rule-number">33</div>
+                <div class="rule-content">
+                    في حال وجود شكوى على عسكري بنفس القطاع يجب ان تكلم مسؤول بالقطاع
+                </div>
+            </div>
+
+            <div class="rule-item fade-in">
+                <div class="rule-number">34</div>
+                <div class="rule-content">
+                    يجب على العسكري التعاون مع قطاع المباحث العامة بعدم كشف هويتهم وفي حال الكشف بدون قصد سيتم إنزالك رتبة
+                </div>
+            </div>
+
+            <div class="rule-item fade-in">
+                <div class="rule-number">35</div>
+                <div class="rule-content">
+                    عقوبة التواصل مع الرئيس ونائبة مباشرة قبل الرجوع ل أحد المسؤولين = إنذار وظيفي أول
                 </div>
             </div>
         </div>

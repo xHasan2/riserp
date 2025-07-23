@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise RP | القوات الجوية - أسياد السماء</title>
+    <link rel="icon" type="image/jpg" href="./img/icon.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --air-primary: #0056b3;
+            --air-secondary: #004494;
+            --air-accent: #0099ff;
+            --text-light: #ffffff;
+            --text-secondary: #cbd5e1;
+            --bg-dark: #0f0f0f;
+            --glass-bg: rgba(0, 86, 179, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-primary: 0 25px 50px -12px rgba(0, 153, 255, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #001133 50%, var(--air-primary) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: url('img/gweh.png') center/contain no-repeat;
+            opacity: 0.4;
+            z-index: -1;
+            animation: deathPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes soar {
+            0%, 100% { opacity: 0.05; transform: translateX(0) translateY(0); }
+            25% { opacity: 0.08; transform: translateX(20px) translateY(-10px); }
+            50% { opacity: 0.1; transform: translateX(-10px) translateY(-20px); }
+            75% { opacity: 0.08; transform: translateX(-20px) translateY(10px); }
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 153, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 68, 148, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 86, 179, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--air-accent), var(--air-secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 86, 179, 0.3), rgba(0, 153, 255, 0.1));
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--air-primary), var(--air-accent));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--air-accent), var(--air-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .unit-info-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--air-primary), var(--air-accent));
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--air-primary), var(--air-accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .info-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .mission-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .mission-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .mission-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .requirements-section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .requirement-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .requirement-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--air-accent);
+        }
+
+        .requirement-icon {
+            font-size: 2rem;
+            color: var(--air-accent);
+            margin-bottom: 1rem;
+        }
+
+        .requirement-title {
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .requirement-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--air-primary), var(--bg-dark));
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--air-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero-title { font-size: 2.5rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .requirements-grid { grid-template-columns: 1fr; }
+            .footer-links { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <span>Rise RP</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="military-rules.html" class="nav-link"><i class="fas fa-shield-alt"></i> القوانين العسكرية</a></li>
+                <li><a href="marines.html" class="nav-link"><i class="fas fa-skull-crossbones"></i> المارينز</a></li>
+                <li><a href="commandos.html" class="nav-link"><i class="fas fa-bolt"></i> الصاعقة</a></li>
+                <li><a href="navy.html" class="nav-link"><i class="fas fa-ship"></i> القوات البحرية</a></li>
+                <li><a href="airforce.html" class="nav-link active"><i class="fas fa-fighter-jet"></i> القوات الجوية</a></li>
+                <li><a href="intelligence.html" class="nav-link"><i class="fas fa-search"></i> البحث والتحري</a></li>
+                <li><a href="death-battalion.html" class="nav-link"><i class="fas fa-skull"></i> كتيبة الموت</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <i class="fas fa-fighter-jet"></i>
+                <span>أسياد السماء والجو</span>
+            </div>
+            <h1 class="hero-title">
+                القوات <span class="highlight">الجوية</span>
+            </h1>
+            <p class="hero-subtitle">
+                وحدة النخبة المتخصصة في العمليات الجوية وحماية الأجواء والاستطلاع الجوي
+            </p>
+        </div>
+    </section>
+
+    <div class="unit-info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-plane"></i>
+                </div>
+                <h3 class="info-title">العمليات الجوية</h3>
+                <p class="info-description">
+                    تنفيذ جميع العمليات الجوية من دوريات ومراقبة وحماية الأجواء الوطنية
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-binoculars"></i>
+                </div>
+                <h3 class="info-title">الاستطلاع الجوي</h3>
+                <p class="info-description">
+                    جمع المعلومات الاستخباراتية من الجو ومراقبة التحركات المشبوهة
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-parachute-box"></i>
+                </div>
+                <h3 class="info-title">الإنزال الجوي</h3>
+                <p class="info-description">
+                    عمليات الإنزال السريع للقوات والإمدادات في المناطق المختلفة
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-helicopter"></i>
+                </div>
+                <h3 class="info-title">الطيران المروحي</h3>
+                <p class="info-description">
+                    العمليات بالمروحيات للإنقاذ والدعم والنقل السريع
+                </p>
+            </div>
+        </div>
+
+        <div class="mission-section">
+            <h2 class="mission-title">من نحن</h2>
+            <p class="mission-description">
+                القوات الجوية الملكية هي الحامية الاولى والدرع الاول الجوي للدوله وتعتبر من اهم الاسلحه العسكريه لانها تستطيع اسقاط اصعب واخطر الاهداف وفي نفس الوقت يصعب اسقاطها 
+ومن مهامها تمشيط الخطوط السريعه والمشاركه في الحروب الكبرى وتتبع القوات الجويه الملكيه للقوات الخاصه والتقديم مفتوح للعموم من اي قطاع عسكري
+            </p>
+        </div>
+
+        <div class="requirements-section">
+            <div class="section-header">
+                <div class="section-banner">
+                    <span>القوانين العامة للقوات الجوية الملكية</span>
+                </div>
+                <h2 class="section-title">القوانين والأنظمة</h2>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-clock"></i></div><div class="requirement-title">الاستقالة</div><div class="requirement-desc">في حال تقديمك للاستقالة يجب عليك إكمال أسبوعين وبذل مجهود عالي وعدم مخالفة الأنظمة والقوانين، غير ذلك يجب عليك دفع غرامة مليونين + سجن 25 شهر.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-tag"></i></div><div class="requirement-title">الرتبة الميدانية</div><div class="requirement-desc">عند تسجيل دخولك كقوات جوية تعتبر رتبتك الميدانية هي رتبة السلاح نفسه ولا تحتسب رتبتك الحقيقية حتى تسجيل الخروج.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-tshirt"></i></div><div class="requirement-title">الزي واليونت</div><div class="requirement-desc">يجب الالتزام بالزي المخصص + دخول الموجة الموحدة + الالتزام باليونت الجديد الخاص بك.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-ban"></i></div><div class="requirement-title">الزي خارج الخدمة</div><div class="requirement-desc">يمنع ارتداء الزي الخاص بالقوات الجوية أو البريهة إلا في حال تسجيل الدخول فقط.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-road"></i></div><div class="requirement-title">تمشيط الخط السريع</div><div class="requirement-desc">يسمح بتمشيط الخط السريع لمدة 15 دقيقة بشرط وجود شخصين على الأقل (إلا إذا كنت صقر فما فوق).</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-helicopter"></i></div><div class="requirement-title">المشاركة في السيناريوهات</div><div class="requirement-desc">يسمح بالمشاركة في بعض السيناريوهات الكبيرة بشرط الالتزام بالزي الرسمي والتوجه بهيليكوبتر.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-map-marker-alt"></i></div><div class="requirement-title">المناطق المحظورة</div><div class="requirement-desc">يمنع دخول المناطق التالية بالطائرات إلا في حال وجود سيناريو: مقرات العصابات، المناطق الآمنة، مدينة الفعاليات، ماب التفحيط.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-gavel"></i></div><div class="requirement-title">تطبيق القوانين</div><div class="requirement-desc">تطبق عليك جميع القوانين الخاصة بالمدينة + القوانين العسكرية كقوات جوية.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-plane-departure"></i></div><div class="requirement-title">إخراج الطائرات</div><div class="requirement-desc">يمنع إخراج الطائرات من غير القاعدة الجوية ويمنع إخراج طائرة ليست على رتبتك.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-slash"></i></div><div class="requirement-title">العقوبات</div><div class="requirement-desc">في حال تخريبك أو استهتارك سيتم فصلك من القوات الجوية ومحاسبتك في قطاعك.</div></div>
+            </div>
+
+            <div class="section-header" style="margin-top:3rem;">
+                <div class="section-banner">
+                    <span>قوانين تفعيل القوات الملكية الجوية</span>
+                </div>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-infinity"></i></div><div class="requirement-title">صلاحية التمشيط</div><div class="requirement-desc">لدى القوات الجوية الملكية الصلاحية في تمشيط الخط السريع والمناطق غير الآمنة عدد لا نهائي من المرات في اليوم.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-hourglass-half"></i></div><div class="requirement-title">مدة التمشيط</div><div class="requirement-desc">بين كل تمشيط وتمشيط مدة لا تقل عن 15 دقيقة.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-users"></i></div><div class="requirement-title">عدد الأفراد</div><div class="requirement-desc">لا يقل عدد الأفراد في التمشيط الواحد عن 1 ولا يزيد عن 10.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-ban"></i></div><div class="requirement-title">منع الرشاش</div><div class="requirement-desc">يمنع استخدام الرشاش في أي طائرة لأنه يعرضك للباند النهائي من حماية السيرفر.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-tie"></i></div><div class="requirement-title">أولوية الطيران</div><div class="requirement-desc">في حال وجود سيناريو يسمح به استخدام الطائرات أو الهليكوبتر الأولوية للحاصلين على الدورة (إلا في حالة أمر من رتبة عليا).</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-parachute-box"></i></div><div class="requirement-title">الباراشوت</div><div class="requirement-desc">يجب عليك حمل البارشوت دائماً وفي حالة تعطل المحرك أو كسر الجناح يجب عليك القفز مباشرة من الطائرة.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-arrow-alt-circle-up"></i></div><div class="requirement-title">تدييف الطائرة</div><div class="requirement-desc">في حال شاركت في سيناريو وكتب المراقب (ديفوو) يجب عليك تدييف الطائرة في ارتفاع عالي والهبوط بالباراشوت مباشرة.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-astronaut"></i></div><div class="requirement-title">الزي الرسمي</div><div class="requirement-desc">في حالة تمشيط الخط السريع أو المداهمة يجب عليك ارتداء الزي الرسمي للطيار.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-gavel"></i></div><div class="requirement-title">قوانين السيناريوهات</div><div class="requirement-desc">تطبق عليك جميع القوانين الخاصة بالسيناريوهات في حالة مشاركتك في سيناريو.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-ban"></i></div><div class="requirement-title">منع المشاركة</div><div class="requirement-desc">يمنع عليك المشاركة كقوات جوية ملكية في السيناريوهات الصغيرة أو التي لا تسمح بالجو مثل البنك أو المترو.</div></div>
+            </div>
+
+            <div class="section-header" style="margin-top:3rem;">
+                <div class="section-banner">
+                    <span>طريقة تفعيل التمشيط</span>
+                </div>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-users"></i></div><div class="requirement-title">عدد الأفراد</div><div class="requirement-desc">يجب أن يكون العدد لا يقل عن 1 ولا يزيد عن 10 (في حال وجود رتبة نسر وفوق يمكن تخطي العدد).</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-tshirt"></i></div><div class="requirement-title">الزي والتوجه</div><div class="requirement-desc">لبس الزي الخاص بالقوات الجوية الملكية ويجب عليك التوجه إلى القاعدة الجوية.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-broadcast-tower"></i></div><div class="requirement-title">الموجة</div><div class="requirement-desc">تحديد موجة 9.6 وإخراج الطائرات حسب توجيهات المسؤول عن التمشيط.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-camera"></i></div><div class="requirement-title">التوثيق</div><div class="requirement-desc">يجب على المسؤول قبل الإقلاع تصوير صورة وإنزالها في جدول التفعيل + منشن لجميع المشاركين.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-bullhorn"></i></div><div class="requirement-title">الإعلان</div><div class="requirement-desc">إنزال إعلان القوات الخاصة فقط ويمنع إنزال إعلان قطاع آخر + يجب كتابة الإعلان باسم القوات الجوية الملكية وليس باسم القوات المشتركة.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-plane"></i></div><div class="requirement-title">الإقلاع والتمشيط</div><div class="requirement-desc">الإقلاع بالبرتوكولات والتوجه لمنطقة التمشيط وبدء التمشيط.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-fighter-jet"></i></div><div class="requirement-title">الاشتباك</div><div class="requirement-desc">في حال الاشتباك مع طائرة أو مدرعة وتم إسقاطها يجب عليك الكتابة في تويتر المدينة: تم إسقاط طائرة أو مدرعة.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-undo"></i></div><div class="requirement-title">العودة للقاعدة</div><div class="requirement-desc">في حال انتهاء المدة المحددة والمكتوبة في الإعلان يجب عليك العودة للقاعدة الجوية فوراً (إلا في حال اشتباكك مع طائرة في طريق العودة يجب عليك إكمال الاشتباك).</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-parachute-box"></i></div><div class="requirement-title">الهبوط والتخزين</div><div class="requirement-desc">الهبوط باستخدام البروتوكولات المحددة وتخزين الطائرة والعودة لمقرك.</div></div>
+            </div>
+
+            <div class="section-header" style="margin-top:3rem;">
+                <div class="section-banner">
+                    <span>قوانين البلاك ليست الجوية</span>
+                </div>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-money-bill-wave"></i></div><div class="requirement-title">غرامة البلاك ليست</div><div class="requirement-desc">في حال حصولك على بلاك ليست يجب عليك دفع غرامة مقدارها 2 مليون دولار + سجن 45 شهر + 300 إنعاش.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-exclamation-triangle"></i></div><div class="requirement-title">دخول المقرات</div><div class="requirement-desc">دخولك لمقرات العصابات بليزر أو هليكوبتر مرتين أو أكثر قد يعرضك لبلاك ليست.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-skull-crossbones"></i></div><div class="requirement-title">التخريب والتحذيرات</div><div class="requirement-desc">التخريب أو الحصول على 6 تحذيرات قد يعرضك لبلاك ليست.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-shield"></i></div><div class="requirement-title">صلاحية البلاك ليست</div><div class="requirement-desc">قائد القوات الجوية ونائبه ومستشاره ومجلس الوزراء يحق لهم إعطاء بلاك ليست.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-ban"></i></div><div class="requirement-title">البلاك ليست النهائي</div><div class="requirement-desc">من الممكن أن يكون البلاك ليست نهائي ولكن لا يحدده سوى قائد القوات الجوية ونائبه ومستشاره فقط.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-secret"></i></div><div class="requirement-title">انتحال الشخصية</div><div class="requirement-desc">انتحال شخصية من الرتب العليا في القوات الجوية الملكية قد يعرضك لبلاك ليست.</div></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">القوات الجوية - Rise RP</h3>
+            <p class="footer-description">
+                أسياد السماء وحماة الأجواء
+            </p>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">الرئيسية</a>
+                <a href="military-rules.html" class="footer-link">القوانين العسكرية</a>
+                <a href="public-security.html" class="footer-link">الأمن العام</a>
+                <a href="defense-ministry.html" class="footer-link">وزارة الدفاع</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rise RP Server. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

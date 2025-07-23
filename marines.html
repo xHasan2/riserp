@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise RP | المارينز - قوات النخبة القتالية</title>
+    <link rel="icon" type="image/jpg" href="./img/icon.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --marines-primary: #8b0000;
+            --marines-secondary: #ff0000;
+            --marines-accent: #ff4500;
+            --text-light: #ffffff;
+            --text-secondary: #cbd5e1;
+            --bg-dark: #0f0f0f;
+            --glass-bg: rgba(139, 0, 0, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-primary: 0 25px 50px -12px rgba(139, 0, 0, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a0a0a 50%, var(--marines-primary) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/marine.png') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 69, 0, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(139, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--marines-accent);
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--marines-accent), var(--marines-secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--marines-accent);
+            background: rgba(255, 69, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.3), rgba(255, 0, 0, 0.1));
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--marines-primary), var(--marines-secondary));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--marines-accent), var(--marines-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .unit-info-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--marines-primary), var(--marines-accent));
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--marines-primary), var(--marines-secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .info-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .mission-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .mission-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .mission-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .requirements-section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .requirement-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .requirement-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--marines-accent);
+        }
+
+        .requirement-icon {
+            font-size: 2rem;
+            color: var(--marines-accent);
+            margin-bottom: 1rem;
+        }
+
+        .requirement-title {
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .requirement-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--marines-primary), var(--bg-dark));
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--marines-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero-title { font-size: 2.5rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .requirements-grid { grid-template-columns: 1fr; }
+            .footer-links { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <span>Rise RP</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="military-rules.html" class="nav-link"><i class="fas fa-shield-alt"></i> القوانين العسكرية</a></li>
+                <li><a href="marines.html" class="nav-link active"><i class="fas fa-skull-crossbones"></i> المارينز</a></li>
+                <li><a href="commandos.html" class="nav-link"><i class="fas fa-bolt"></i> الصاعقة</a></li>
+                <li><a href="navy.html" class="nav-link"><i class="fas fa-ship"></i> القوات البحرية</a></li>
+                <li><a href="airforce.html" class="nav-link"><i class="fas fa-fighter-jet"></i> القوات الجوية</a></li>
+                <li><a href="intelligence.html" class="nav-link"><i class="fas fa-search"></i> البحث والتحري</a></li>
+                <li><a href="death-battalion.html" class="nav-link"><i class="fas fa-skull"></i> كتيبة الموت</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <i class="fas fa-skull-crossbones"></i>
+                <span>وحدة النخبة القتالية</span>
+            </div>
+            <h1 class="hero-title">
+                قوات <span class="highlight">المارينز</span>
+            </h1>
+            <p class="hero-subtitle">
+                النخبة العسكرية المتخصصة في العمليات الخاصة والمهام القتالية الصعبة والعمليات الاستراتيجية المعقدة
+            </p>
+        </div>
+    </section>
+
+    <div class="unit-info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-crosshairs"></i>
+                </div>
+                <h3 class="info-title">المهمة الأساسية</h3>
+                <p class="info-description">
+                    تنفيذ العمليات الخاصة والمهام القتالية عالية المخاطر بأعلى مستويات الكفاءة والاحترافية
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3 class="info-title">التخصص</h3>
+                <p class="info-description">
+                    قتال النخبة، العمليات الاستراتيجية، التكتيكات المتقدمة، والمهام الخطيرة
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="info-title">التدريب</h3>
+                <p class="info-description">
+                    تدريب مكثف على أحدث التقنيات القتالية والأسلحة المتطورة والتكتيكات العسكرية
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="info-title">الجاهزية</h3>
+                <p class="info-description">
+                    جاهزية قتالية على مدار الساعة والاستعداد للتدخل في أي لحظة
+                </p>
+            </div>
+        </div>
+
+        <div class="mission-section">
+            <h2 class="mission-title">من نحن</h2>
+            <p class="mission-description">
+         قُوات المارينز هُم عادةً قُوة مشاة مُتخصصة في دعم العمليات العسكرية الخاصة بالقُوات البحرية والبرية في البحر والبر والجو، 
+، فضلاً عن تنفيذ عملياتهم الخاصة. تنضوي قُوات المارينز فرقه عسكريه مستقله بذاته عن الفروع العسكرية الأُخرى،
+ تضمنت المهام التي تختص بها قُوات المارينز المُساعدة في الحفاظ على الانضباط والنظام في النساريوهات العسكريه ، 
+أو مهام إنزال القُوات أثناء الحروب او بغرض الاستيلاء على مواقع العدو،  
+من مُهامها توفير القوات الضرورية في عمليات الإنزال البحري او الجوي ومُداهمة الشواطئ والأهداف البحرية والارضيه .
+ تُنفذ هاته القُوات عملياتها انطلاقا من السفن او من الطائرات ، وقد دُربت أساسا على مهام الإنزال الجوي وتأمين النقاط الرئيسية في مواقع السنريوهات ،
+ أو بقدر ما يمكن أن توفره الخدمات اللوجستية والآليات المحمولة على متن السفن.
+تقود الوحدات المارينز بشكل أساسي عملياتها من السفن الحربية أو القوارب أو سفن الإنزال أو الحوامات أو المركبات البرمائية أو المروحيات. 
+تُدرب هاته الوحدات المتخصصة أيضًا على تقنيات الغوص القتالي والسباحة القتالية والهبوط بالمظلات.
+إلى جانب العمليات البرمائية
+            </p>
+        </div>
+
+        <div class="requirements-section">
+            <div class="section-header">
+                <div class="section-banner">
+                    <span>قوانين المارينز</span>
+                </div>
+                <h2 class="section-title">قوانين وأحكام فرقة المارينز</h2>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-secret"></i></div><div class="requirement-title">المداهمات السرية</div><div class="requirement-desc">يسمح للمارينز بالمداهمات السرية بوجود مراقب فقط.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-bullhorn"></i></div><div class="requirement-title">الذهاب للسيناريوهات</div><div class="requirement-desc">يسمح للمارينز الذهاب بدون إعلان لجميع السيناريوهات فقط في حال كان قطاع منزل إعلان توجه.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-check"></i></div><div class="requirement-title">الاشتباه</div><div class="requirement-desc">يسمح لهم الاشتباه بأي شخص كان.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-shield"></i></div><div class="requirement-title">تفعيل المارينز</div><div class="requirement-desc">يتم تفعيل المارينز بأمر من مسؤول الوزارات أو رئيس مجلس الوزراء أو نائبه أو مستشاره أو ليدر المارينز أو الكو ليدر أو الكوماندر أو مشرفين المارينز بعد أخذ الإذن منهم.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-gun"></i></div><div class="requirement-title">حمل السلاح</div><div class="requirement-desc">يسمح للمارينز حمل السلاح في جميع السيناريوهات ولا يحق لك إطلاق النار على أي شخص، وفي حال المخالفة يتم سحب الدورة بدون تحذير مسبق.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-volume-mute"></i></div><div class="requirement-title">السرية التامة</div><div class="requirement-desc">لا يسمح لأفراد المارينز التحدث أو تصريح انتماءه للفرقة، وفي حال المخالفة يتم سحب الدورة بدون تحذير مسبق.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-lock"></i></div><div class="requirement-title">منع التواصل</div><div class="requirement-desc">يمنع على أفراد المارينز التواصل المباشر مع أي شخص في حال التفعيل، وفي حال المخالفة يتم سحب الدورة بدون تحذير مسبق. (النقطة 7+8 تشمل الحاصلين على ونق المارينز فقط ولا تطبق في دورة المارينز)</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-tie"></i></div><div class="requirement-title">التكلم بأمر المسؤول</div><div class="requirement-desc">في حال جاءك أمر من مسؤول الوزارات أو ليدر المارينز أو الكو ليدر أو الكوماندر أو مشرف مارينز يحق لك التكلم، وفي حال المخالفة وعدم الاستجابة يتم سحب الدورة بدون تحذير مسبق.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-hands-helping"></i></div><div class="requirement-title">المشاركة كمساعد مفاوض</div><div class="requirement-desc">في حال المشاركة في السيناريوهات أفراد المارينز لا يجب عليهم رفع أيديهم في حال وجوده كمساعد مفاوض.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-tshirt"></i></div><div class="requirement-title">القيافة العسكرية</div><div class="requirement-desc">الالتزام بالقيافة العسكرية بشكل كامل، أي مخالفة أو تهاون في ذلك يتم الاستبعاد فوراً، وفي حال كانت معك الدورة يتم سحبها بدون تحذير مسبق.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-times"></i></div><div class="requirement-title">الاستجابة للمسؤولين</div><div class="requirement-desc">عدم الاستجابة لمسؤولي المارينز أو المشرفين يؤدي إلى سحب الدورة بدون تحذير مسبق.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-ninja"></i></div><div class="requirement-title">انتحال الشخصية</div><div class="requirement-desc">انتحال شخصية مدرب المارينز أو مسؤول مارينز أو الادعاء بأنك مسؤول وأنت عضو في الفرقة سيتم إعطائك "مفصول وزاري".</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-broadcast-tower"></i></div><div class="requirement-title">الاستجابة للتفعيل</div><div class="requirement-desc">في حال كنت موجود في المدينة وتم إرسال رسالة أنه سيتم تفعيل الفرقة يجب عليك التوجه للروم المذكور في الرسالة، وفي حال عدم الاستجابة سيتم اتخاذ إجراء بحقك وسحب الدورة بدون تحذير مسبق.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-flag"></i></div><div class="requirement-title">إنشاء كمائن ومداهمات</div><div class="requirement-desc">يسمح لأفراد المارينز إنشاء كمائن أو مداهمات في جميع المدن.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-binoculars"></i></div><div class="requirement-title">وحدة الاستطلاع والدفاع الجوي</div><div class="requirement-desc">يسمح لأفراد المارينز إخراج وحدة استطلاع جوي + دفاع جوي.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-friends"></i></div><div class="requirement-title">منع التواصل مع العساكر</div><div class="requirement-desc">يمنع على العساكر التواصل مع أي فرد من أفراد المارينز (يحق لك التكلم مع المسؤولين فقط للضرورة بعد أخذ الإذن).</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-clock"></i></div><div class="requirement-title">الالتزام بالتفعيل</div><div class="requirement-desc">في حال تم تفعيل المارينز وأنت متواجد بالمدينة وعدم توجهك لمدة 3 تفعيلات سيتم سحب الدورة منك مهما كانت رتبتك.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-award"></i></div><div class="requirement-title">الكفاءة والمسؤوليات</div><div class="requirement-desc">المسؤوليات في الفرقة تعتمد على الكفاءة وليس الرتبة الميدانية فقط.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user"></i></div><div class="requirement-title">إلغاء المسؤوليات الميدانية</div><div class="requirement-desc">عند تسجيل دخولك في الفرقة لا يتم أخذ المسؤوليات الموكلة إليك، وتعتبر فرد من أفراد الفرقة وتنفذ أوامر المدربين أو المشرفين حتى لو كانت مسؤولياتهم أدنى من مسؤوليتك.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-crown"></i></div><div class="requirement-title">صلاحيات الكوماندر</div><div class="requirement-desc">كوماندر المارينز صلاحياته تكون كمسؤول في الفرقة في حال عدم وجود كو ليدر المارينز.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-tie"></i></div><div class="requirement-title">اختيار المفاوض والمساعد</div><div class="requirement-desc">المسؤول عن التوجيه واختيار المفاوض والمساعد يكون أعلى رتبة من رتب المسؤولين الموضحة في الترتيب.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-users-cog"></i></div><div class="requirement-title">توكيل الإشراف</div><div class="requirement-desc">يمكن لأعلى رتبة متواجدة في الفرقة توكيل مسؤولية الإشراف لأي شخص متواجد من المسؤولين ويكون مشرف معه.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-users"></i></div><div class="requirement-title">تواجد المسؤولين</div><div class="requirement-desc">في حال تواجد مسؤول الوزارات، رئيس مجلس الوزراء، مستشار رئيس مجلس الوزراء في وقت واحد يتم اعتبار كل من المشرفين والمسؤولين والليدر والكوليدر والكوماندر كأفراد في الفرقة ويكون لبسهم كلبس الأفراد في الفرقة.</div></div>
+                <div class="requirement-item"><div class="requirement-icon"><i class="fas fa-user-shield"></i></div><div class="requirement-title">الولاء للرتبة الأعلى</div><div class="requirement-desc">ولاء أفراد المارينز لأعلى رتبة متواجدة من المسؤولين في التفعيل.</div></div>
+            </div>
+            <div class="final-requirements" style="margin-top:2rem;">
+                <h3 class="final-title">ملاحظة هامة</h3>
+                <div class="unavailable-notice" style="background:rgba(139,0,0,0.08);color:#fff;">
+                    <span>كل من يملك الرولات أدناه يعتبر مسؤول رسمي لدى فرقة المارينز ويجب عليك الاستجابة لهم بالترتيب:</span><br>
+                    <span>@ぃ |  مـسـؤول الـوزارات 〴<br>@👑 |  رئـيـس مـجـلـس الـوزراء<br>@👑 | نـائـب رئـيـس مـجـلـس الـوزراء<br>@👑 | مـسـتـشـار رئـيـس مـجـلـس الـوزراء<br>@Marine Leader | 👑 🔱<br>@Marine Co Leader | 👑 🔱<br>@Marine Commander | 👑 🔱<br>@Marine Official | 🔱</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">المارينز - Rise RP</h3>
+            <p class="footer-description">
+                النخبة العسكرية في خدمة الوطن والواجب
+            </p>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">الرئيسية</a>
+                <a href="military-rules.html" class="footer-link">القوانين العسكرية</a>
+                <a href="public-security.html" class="footer-link">الأمن العام</a>
+                <a href="defense-ministry.html" class="footer-link">وزارة الدفاع</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rise RP Server. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

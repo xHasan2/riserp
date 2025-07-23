@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise RP | شعبة البحث والتحري - عين الاستخبارات</title>
+    <link rel="icon" type="image/jpg" href="./img/icon.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --intel-primary: #2d3748;
+            --intel-secondary: #4a5568;
+            --intel-accent: #9f7aea;
+            --text-light: #ffffff;
+            --text-secondary: #cbd5e1;
+            --bg-dark: #0f0f0f;
+            --glass-bg: rgba(45, 55, 72, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-primary: 0 25px 50px -12px rgba(159, 122, 234, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1a2e 50%, var(--intel-primary) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/b7s.webp') center/contain no-repeat;
+            opacity: 0.03;
+            z-index: -1;
+            animation: surveillance 6s ease-in-out infinite;
+        }
+
+        @keyframes surveillance {
+            0%, 100% { 
+                opacity: 0.03; 
+                transform: scale(1) rotate(0deg);
+            }
+            25% { 
+                opacity: 0.05; 
+                transform: scale(1.02) rotate(1deg);
+            }
+            50% { 
+                opacity: 0.08; 
+                transform: scale(1.01) rotate(-1deg);
+            }
+            75% { 
+                opacity: 0.05; 
+                transform: scale(1.02) rotate(1deg);
+            }
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(159, 122, 234, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(74, 85, 104, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(45, 55, 72, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--intel-accent), var(--intel-secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(45, 55, 72, 0.3), rgba(159, 122, 234, 0.1));
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--intel-primary), var(--intel-accent));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--intel-accent), var(--intel-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .unit-info-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--intel-primary), var(--intel-accent));
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--intel-primary), var(--intel-accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .info-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .mission-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .mission-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .mission-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .requirements-section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .requirement-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .requirement-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--intel-accent);
+        }
+
+        .requirement-icon {
+            font-size: 2rem;
+            color: var(--intel-accent);
+            margin-bottom: 1rem;
+        }
+
+        .requirement-title {
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .requirement-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-banner {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--intel-primary), var(--intel-accent));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .final-requirements {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .final-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .unavailable-notice {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 10px;
+            padding: 1rem 2rem;
+            color: #ffc107;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .unavailable-notice i {
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--intel-primary), var(--bg-dark));
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--intel-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero-title { font-size: 2.5rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .requirements-grid { grid-template-columns: 1fr; }
+            .footer-links { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <span>Rise RP</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="military-rules.html" class="nav-link"><i class="fas fa-shield-alt"></i> القوانين العسكرية</a></li>
+                <li><a href="marines.html" class="nav-link"><i class="fas fa-skull-crossbones"></i> المارينز</a></li>
+                <li><a href="commandos.html" class="nav-link"><i class="fas fa-bolt"></i> الصاعقة</a></li>
+                <li><a href="navy.html" class="nav-link"><i class="fas fa-ship"></i> القوات البحرية</a></li>
+                <li><a href="airforce.html" class="nav-link"><i class="fas fa-fighter-jet"></i> القوات الجوية</a></li>
+                <li><a href="intelligence.html" class="nav-link active"><i class="fas fa-search"></i> البحث والتحري</a></li>
+                <li><a href="death-battalion.html" class="nav-link"><i class="fas fa-skull"></i> كتيبة الموت</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <i class="fas fa-eye"></i>
+                <span>عين الاستخبارات والمراقبة</span>
+            </div>
+            <h1 class="hero-title">
+                شعبة <span class="highlight">البحث والتحري</span>
+            </h1>
+            <p class="hero-subtitle">
+                وحدة النخبة المتخصصة في الاستخبارات وجمع المعلومات والتحقيقات السرية
+            </p>
+        </div>
+    </section>
+
+    <div class="unit-info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-user-secret"></i>
+                </div>
+                <h3 class="info-title">العمليات السرية</h3>
+                <p class="info-description">
+                    تنفيذ المهام السرية وجمع المعلومات الحساسة بطرق متقدمة ومتخفية
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+                <h3 class="info-title">التحقيقات المتقدمة</h3>
+                <p class="info-description">
+                    إجراء تحقيقات شاملة ومعقدة في القضايا الأمنية والجنائية المختلفة
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-satellite-dish"></i>
+                </div>
+                <h3 class="info-title">المراقبة الإلكترونية</h3>
+                <p class="info-description">
+                    استخدام أحدث تقنيات المراقبة والتجسس الإلكتروني لجمع البيانات
+                </p>
+            </div>
+        </div>
+
+        <div class="mission-section">
+            <h2 class="mission-title">من نحن</h2>
+            <p class="mission-description">
+                شعبة البحث والتحري هي العين الساهرة والجهاز الاستخباراتي للدولة في خادم Rise RP. 
+                تتولى مسؤولية جمع المعلومات الاستخباراتية ومراقبة الأنشطة المشبوهة والتحقيق في القضايا المعقدة. 
+                أعضاء الشعبة مدربون على أعلى مستوى من السرية والاحترافية، ويمتلكون مهارات متقدمة في التحليل والاستنتاج. 
+                يعملون في الخفاء لحماية الأمن القومي وكشف المؤامرات والتهديدات قبل وقوعها. 
+                هدفهم الأساسي هو ضمان أمن الدولة من خلال المعلومات الدقيقة والتحليل الاستراتيجي.
+            </p>
+        </div>
+
+        <div class="requirements-section">
+            <div class="section-header">
+                <div class="section-banner">
+                    <span>قوانين شعبة التحريات والبحث الجنائي</span>
+                </div>
+                <h2 class="section-title">القوانين والصلاحيات</h2>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4 class="requirement-title">المداهمات بدون إنذار</h4>
+                    <p class="requirement-desc">يسمح لشعبة التحريات والبحث الجنائي مداهمة الاماكن المشبوهة بدون سابق انذار [بدون اعلان] بأذن من رئيس البحث والتحري ونائب والمدير والنائب</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h4 class="requirement-title">المركبات الخاصة</h4>
+                    <p class="requirement-desc">يلزم على شعبة التحريات والبحث الجنائي الالتزام بالمركبات الخاصة لهم ويمنع لهم اخراج مركبات اخرى الا بأذن من رئيس البحث والتحري ونائب والمدير والنائب</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4 class="requirement-title">التعاون مع المجرمين</h4>
+                    <p class="requirement-desc">يحق لشعبة التحريات والبحث الجنائي في المدينة الاتفاق مع مجرمين لعمل مهمة اجرامية والاطاحة بهم</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h4 class="requirement-title">تفتيش الحقائب</h4>
+                    <p class="requirement-desc">يحق لشعبة التحريات والبحث الجنائي تفتيش الحقيبة في اي مكان و اي زمان عن طريق عضلة الـU</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-crosshairs"></i>
+                    </div>
+                    <h4 class="requirement-title">الكمائن الأمنية</h4>
+                    <p class="requirement-desc">يحق لشعبة التحريات والبحث الجنائي عمل اي كمين سواء في المدينة الاولى او الثانية او الثالثة للاطاحة بالمجرمين واقاعهم تحت قبضة العدالة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <h4 class="requirement-title">قائمة المطلوبين</h4>
+                    <p class="requirement-desc">يحق لشعبة التحريات والبحث الجنائي وضع مجرمين او اشخاص معينين لوضعهم بقائمة المطلوبين لدى العدالة</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h4 class="requirement-title">التعاون مع المرور السري</h4>
+                    <p class="requirement-desc">يحق لشعبة التحريات والبحث الجنائي التعاون مع قسم المرور السري للقبض على المجرمين</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h4 class="requirement-title">القبض والإعدام</h4>
+                    <p class="requirement-desc">يحق لشعبة التحريات والبحث الجنائي القبض على المجرمين ويجب انزال اعلان ولايشترط الرجوع للمحكمة ويتم الاعدام في قصر الحاكم بعد الانتصار فيه</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4 class="requirement-title">أولوية الإعدامات</h4>
+                    <p class="requirement-desc">شعبة التحريات والبحث الجنائي القسم الاول والذي له الاولوية للاعدامات ويحق للمرور سري تحويل المجرمين و اعضاء المنظمات الارهابية لشعبة التحريات والبحث الجنائي ليتم اتخاذ الاجراء القانوني بحقه</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <h4 class="requirement-title">الرتب المصرحة</h4>
+                    <p class="requirement-desc">شعبة التحريات والبحث الجنائي مصرح لرتبة جندي وفوق يتم تحديد الحملة من رئيس البحث والتحري ونائبه والمدير والنائب في حال توجد حملة لشعبة التحريات والبحث الجنائي</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-traffic-light"></i>
+                    </div>
+                    <h4 class="requirement-title">المخالفات المرورية</h4>
+                    <p class="requirement-desc">يحق لشعبة التحريات والبحث الجنائي التعاون مع قسم المرور السري للقبض على المجرمين وتطبيق عمل المرور السري والمخالفات المرورية والجنائية</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-power-off"></i>
+                    </div>
+                    <h4 class="requirement-title">تفعيل الشعبة</h4>
+                    <p class="requirement-desc">شعبة البحث والتحري يكون تفعيلها فقط من رئيس البحث والتحري والنائب او المدير والنائب ويتم تفعيل الشعبة يوم واغلاقها يوم</p>
+                </div>
+                <div class="requirement-item">
+                    <div class="requirement-icon">
+                        <i class="fas fa-checkpoint"></i>
+                    </div>
+                    <h4 class="requirement-title">نقاط التفتيش</h4>
+                    <p class="requirement-desc">يُحق لشعبة البحث والتحري تفعيل نقطة تفتيش في المدينة الاولى أثناء تفعيل الشُعبة</p>
+                </div>
+            </div>
+            
+            <div class="final-requirements">
+                <h3 class="final-title">شروط القبول في شعبة البحث والتحري</h3>
+                <div class="unavailable-notice">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>غير متاح في الوقت الحالي</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">شعبة البحث والتحري - Rise RP</h3>
+            <p class="footer-description">
+                عين الاستخبارات الساهرة على أمن الوطن
+            </p>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">الرئيسية</a>
+                <a href="military-rules.html" class="footer-link">القوانين العسكرية</a>
+                <a href="public-security.html" class="footer-link">الأمن العام</a>
+                <a href="defense-ministry.html" class="footer-link">وزارة الدفاع</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rise RP Server. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

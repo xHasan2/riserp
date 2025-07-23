@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise RP | اللوائح والقوانين العسكرية</title>
+    <link rel="icon" type="image/jpg" href="./img/icon.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d3748;
+            --accent-color: #3182ce;
+            --success-color: #38a169;
+            --warning-color: #d69e2e;
+            --danger-color: #e53e3e;
+            --text-light: #ffffff;
+            --text-secondary: #cbd5e1;
+            --bg-dark: #0f1419;
+            --bg-darker: #0a0e13;
+            --glass-bg: rgba(26, 54, 93, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-primary: 0 25px 50px -12px rgba(49, 130, 206, 0.4);
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 50%, var(--primary-color) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/Wallpaper.jpg') center/cover no-repeat;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(49, 130, 206, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(26, 54, 93, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: url('img/Wallpaper.jpg') center/cover no-repeat, 
+                        linear-gradient(-45deg, #1a0f0a, #2c1810, #8b0000, #ff4500);
+            background-size: cover, 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .background-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 15, 10, 0.7);
+            z-index: 1;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 54, 93, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 120px auto 40px;
+            padding: 0 2rem;
+        }
+
+        .hero-section {
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.3), rgba(49, 130, 206, 0.1));
+            margin-bottom: 4rem;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .unit-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .unit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+            transition: all 0.3s ease;
+        }
+
+        .unit-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-card);
+            border-color: var(--accent-color);
+        }
+
+        .unit-card:hover::before {
+            height: 8px;
+        }
+
+        .unit-card.marines {
+            --unit-primary: #dc2626;
+            --unit-secondary: #b91c1c;
+        }
+
+        .unit-card.commandos {
+            --unit-primary: #ff6b00;
+            --unit-secondary: #ea580c;
+        }
+
+        .unit-card.navy {
+            --unit-primary: #0074d9;
+            --unit-secondary: #0056b3;
+        }
+
+        .unit-card.airforce {
+            --unit-primary: #7c3aed;
+            --unit-secondary: #5b21b6;
+        }
+
+        .unit-card.intelligence {
+            --unit-primary: #059669;
+            --unit-secondary: #047857;
+        }
+
+        .unit-card.death-battalion {
+            --unit-primary: #1f2937;
+            --unit-secondary: #111827;
+        }
+
+        .unit-card.marines::before {
+            background: linear-gradient(90deg, #dc2626, #ef4444);
+        }
+
+        .unit-card.commandos::before {
+            background: linear-gradient(90deg, #ff6b00, #f97316);
+        }
+
+        .unit-card.navy::before {
+            background: linear-gradient(90deg, #0074d9, #3b82f6);
+        }
+
+        .unit-card.airforce::before {
+            background: linear-gradient(90deg, #7c3aed, #8b5cf6);
+        }
+
+        .unit-card.intelligence::before {
+            background: linear-gradient(90deg, #059669, #10b981);
+        }
+
+        .unit-card.death-battalion::before {
+            background: linear-gradient(90deg, #1f2937, #374151);
+        }
+
+        .unit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--unit-primary, var(--primary-color)), var(--unit-secondary, var(--secondary-color)));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            border: 2px solid var(--glass-border);
+        }
+
+        .unit-card:hover .unit-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .unit-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .unit-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .unit-features {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-5px);
+        }
+
+        .feature-icon {
+            background: var(--unit-primary, var(--accent-color));
+            color: var(--text-light);
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-light);
+            flex: 1;
+        }
+
+        .view-details {
+            background: linear-gradient(135deg, var(--unit-primary, var(--accent-color)), var(--unit-secondary, var(--primary-color)));
+            color: var(--text-light);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            width: 100%;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .view-details:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--bg-dark));
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero-title { font-size: 2.5rem; }
+            .units-grid { 
+                grid-template-columns: 1fr; 
+                gap: 1.5rem;
+            }
+            .unit-card { 
+                padding: 2rem;
+            }
+            .unit-title {
+                font-size: 1.5rem;
+            }
+            .container { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <span>Rise RP</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="military-rules.html" class="nav-link active"><i class="fas fa-shield-alt"></i> القوانين العسكرية</a></li>
+                <li><a href="public-security.html" class="nav-link"><i class="fas fa-shield"></i> الأمن العام</a></li>
+                <li><a href="defense-ministry.html" class="nav-link"><i class="fas fa-building"></i> وزارة الدفاع</a></li>
+                <li><a href="state-security.html" class="nav-link"><i class="fas fa-user-secret"></i> أمن الدولة</a></li>
+                <li><a href="health-ministry.html" class="nav-link"><i class="fas fa-heartbeat"></i> وزارة الصحة</a></li>
+                <li><a href="justice-ministry.html" class="nav-link"><i class="fas fa-balance-scale"></i> وزارة العدل</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <i class="fas fa-shield-halved"></i>
+                <span>اللوائح والقوانين العسكرية</span>
+            </div>
+            <h1 class="hero-title">
+                الوحدات <span class="highlight">العسكرية</span>
+            </h1>
+            <p class="hero-subtitle">
+                استكشف الوحدات العسكرية المتخصصة ولوائحها وقوانينها في خادم Rise RP
+            </p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="units-grid">
+            <!-- بطاقة المارينز -->
+            <a href="marines.html" class="unit-card marines">
+                <div class="unit-icon">
+                    <i class="fas fa-skull-crossbones"></i>
+                </div>
+                <h3 class="unit-title">المارينز</h3>
+                <p class="unit-description">
+                    قوات النخبة العسكرية المتخصصة في العمليات الخاصة والمهام القتالية الصعبة
+                </p>
+                <div class="unit-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-crosshairs"></i></div>
+                        <span class="feature-text">الانضباط التام في العمليات العسكرية</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-dumbbell"></i></div>
+                        <span class="feature-text">التدريب المكثف على القتال المتقدم</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <span class="feature-text">الاستعداد القتالي المستمر</span>
+                    </div>
+                </div>
+                <div class="view-details">عرض التفاصيل والقوانين</div>
+            </a>
+
+            <!-- بطاقة الصاعقة -->
+            <a href="commandos.html" class="unit-card commandos">
+                <div class="unit-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="unit-title">الصاعقة</h3>
+                <p class="unit-description">
+                    وحدة النخبة المتخصصة في المهام الخاصة والعمليات السريعة والتدخل الفوري
+                </p>
+                <div class="unit-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                        <span class="feature-text">التنفيذ السريع للعمليات عالية المخاطر</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-tools"></i></div>
+                        <span class="feature-text">إتقان جميع أنواع الأسلحة التكتيكية</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-users"></i></div>
+                        <span class="feature-text">العمل الجماعي المتناغم والتنسيق المثالي</span>
+                    </div>
+                </div>
+                <div class="view-details">عرض التفاصيل والقوانين</div>
+            </a>
+
+            <!-- بطاقة القوات البحرية -->
+            <a href="navy.html" class="unit-card navy">
+                <div class="unit-icon">
+                    <i class="fas fa-ship"></i>
+                </div>
+                <h3 class="unit-title">القوات البحرية</h3>
+                <p class="unit-description">
+                    حماة البحار والمياه الإقليمية المتخصصة في العمليات البحرية والإنقاذ
+                </p>
+                <div class="unit-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-anchor"></i></div>
+                        <span class="feature-text">مراقبة وحماية الحدود البحرية</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-life-ring"></i></div>
+                        <span class="feature-text">عمليات التدخل البحري والطوارئ</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-anchor"></i></div>
+                        <span class="feature-text">الحفاظ على أمن البحار</span>
+                    </div>
+                </div>
+                <div class="view-details">عرض التفاصيل والقوانين</div>
+            </a>
+
+            <!-- بطاقة القوات الجوية -->
+            <a href="airforce.html" class="unit-card airforce">
+                <div class="unit-icon">
+                    <i class="fas fa-fighter-jet"></i>
+                </div>
+                <h3 class="unit-title">القوات الجوية</h3>
+                <p class="unit-description">
+                    أسياد السماء المتخصصة في السيطرة الجوية والعمليات الجوية المتقدمة
+                </p>
+                <div class="unit-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-plane"></i></div>
+                        <span class="feature-text">مراقبة الأجواء والدفاع ضد التهديدات</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-binoculars"></i></div>
+                        <span class="feature-text">مهام الاستطلاع الجوي والمراقبة</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-parachute-box"></i></div>
+                        <span class="feature-text">الدعم الجوي والإنزال السريع</span>
+                    </div>
+                </div>
+                <div class="view-details">عرض التفاصيل والقوانين</div>
+            </a>
+
+            <!-- بطاقة شعبة البحث والتحري -->
+            <a href="intelligence.html" class="unit-card intelligence">
+                <div class="unit-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3 class="unit-title">شعبة البحث والتحري</h3>
+                <p class="unit-description">
+                    عين الاستخبارات المتخصصة في جمع المعلومات والتحقيقات الأمنية السرية
+                </p>
+                <div class="unit-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-user-secret"></i></div>
+                        <span class="feature-text">جمع وتحليل المعلومات الاستخبارية</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-search-plus"></i></div>
+                        <span class="feature-text">التحقيقات الأمنية والاستجوابات</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-network-wired"></i></div>
+                        <span class="feature-text">مراقبة الأنشطة المشبوهة</span>
+                    </div>
+                </div>
+                <div class="view-details">عرض التفاصيل والقوانين</div>
+            </a>
+
+            <!-- بطاقة كتيبة الموت -->
+            <a href="death-battalion.html" class="unit-card death-battalion">
+                <div class="unit-icon">
+                    <i class="fas fa-skull"></i>
+                </div>
+                <h3 class="unit-title">كتيبة الموت</h3>
+                <p class="unit-description">
+                    النخبة المقاتلة الأقوى للمهام المستحيلة والعمليات عالية المخاطر
+                </p>
+                <div class="unit-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-fire"></i></div>
+                        <span class="feature-text">تنفيذ أخطر المهام والعمليات المستحيلة</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-fist-raised"></i></div>
+                        <span class="feature-text">الاستعداد للتضحية والإقدام</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-crosshairs"></i></div>
+                        <span class="feature-text">إتقان فنون القتال والأسلحة المتقدمة</span>
+                    </div>
+                </div>
+                <div class="view-details">عرض التفاصيل والقوانين</div>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">اللوائح العسكرية - Rise RP</h3>
+            <p class="footer-description">
+                استكشف جميع الوحدات العسكرية وقوانينها في Rise RP
+            </p>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">الرئيسية</a>
+                <a href="public-security.html" class="footer-link">الأمن العام</a>
+                <a href="defense-ministry.html" class="footer-link">وزارة الدفاع</a>
+                <a href="health-ministry.html" class="footer-link">وزارة الصحة</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rise RP Server. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

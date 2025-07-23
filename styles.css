@@ -17,6 +17,7 @@
     --justice-ministry: linear-gradient(135deg, #3f2c0c 0%, #785317 50%, #a16207 100%);
     --royal-guard: linear-gradient(135deg, #00a52d 0%, #22c55e 50%, #4ade80 100%);
     --grievance-office: linear-gradient(135deg, #8b1538 0%, #a91b47 50%, #c72448 100%);
+    --military-rules: linear-gradient(135deg, #0e0b0b 0%, #282828 50%, #404040 100%);
 }
 
 * {
@@ -405,6 +406,25 @@ body {
     border: 1px solid #8b1538;
 }
 
+.rule-category.military-rules::before {
+    background: var(--military-rules);
+}
+
+.rule-category.military-rules .category-icon {
+    background: var(--military-rules);
+}
+
+.rule-category.military-rules:hover {
+    box-shadow: 0 30px 60px rgba(14, 11, 11, 0.8);
+    border: 1px solid #404040;
+}
+
+.rule-category.military-rules .category-title,
+.rule-category.military-rules .category-description {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 .rule-category:hover {
     transform: translateY(-10px) scale(1.02);
 }
@@ -514,4 +534,29 @@ body {
     .category-title {
         font-size: 1.5rem;
     }
+}
+
+.header-section.royal-guard {
+    background: var(--royal-guard);
+}
+
+.header-section.royal-guard .header-icon {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.rule-item.privilege {
+    background: linear-gradient(135deg, rgba(0, 165, 45, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%);
+    border-right: 4px solid #00a52d;
+}
+
+.rule-item.privilege .rule-number {
+    background: var(--royal-guard);
+    color: white;
+    font-size: 1.2rem;
+}
+
+.rule-item.privilege:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 10px 25px rgba(0, 165, 45, 0.3);
 }
